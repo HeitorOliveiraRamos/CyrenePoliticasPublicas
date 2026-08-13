@@ -1,308 +1,247 @@
-# CyreneBot
+# Política de Privacidade — CyreneBot
 
-Bot de Discord em Kotlin + Spring Boot para uma comunidade de **Honkai: Star Rail**, com IA local
-(Ollama). Faz três coisas, por caminhos separados de propósito:
+**Última atualização: 13 de agosto de 2026.** *(English version below / versão em inglês no fim.)*
 
-1. **Conversa** em persona (menções e sessões de chat);
-2. **Responde sobre HSR** com dados reais — kits, cones, relíquias, builds, lore — sempre ancorado
-   numa fonte, nunca na memória do modelo;
-3. **Desenha cards PNG** (guia, ascensão, avaliação de vitrine, tier list) e faz moderação por
-   comandos de barra.
+CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
+que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado e como apagar tudo.
 
-Nada passa por API paga: LLM no Ollama local, Postgres local, busca web (opcional) num SearXNG em
-Docker.
+**Responsável pelos dados:** `[SEU NOME OU APELIDO]` — contato em [Contato](#contato).
 
-> **Instalar numa máquina nova:** [SETUP.md](SETUP.md). Este arquivo é a referência de como o bot
-> funciona.
+---
 
-## Requisitos
+## 1. O que eu guardo, e por quê
 
-| Ferramenta | Versão | Pra quê |
+| O quê | Quando entra | Pra quê |
 |---|---|---|
-| **JDK** | 21+ | bytecode alvo é 21 |
-| **Maven** | 3.9+ | build |
-| **PostgreSQL** | 14+ (testado em 18) | banco + vector store |
-| **pgvector** | recente | extensão de vetores — precisa de superuser pra criar, uma vez |
-| **Ollama** | recente | LLM de chat + embeddings |
-| **Docker** | qualquer | **opcional**, só pro SearXNG |
+| Seu ID de usuário do Discord e seu nome de exibição atual | Na primeira vez que você fala comigo ou usa um comando | É o que liga uma coisa à outra: sua nota, sua memória, seu UID. O nome existe pra eu te chamar pelo nome |
+| O texto que você escreve no `/memoria` | Só quando você abre o `/memoria` e escreve | Lembrar de você entre uma conversa e outra. É livre: você decide o que vai ali |
+| Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank` |
+| Conteúdo das mensagens que você endereça a mim | Menção, resposta a uma mensagem minha, ou uma sessão aberta com `/iniciar-conversa` | Entender a pergunta e responder. Sessões do `/iniciar-conversa` guardam o par pergunta/resposta pra conversa ter fio |
+| Perguntas e respostas sobre o jogo | Quando você me pergunta algo sobre HSR | Cache: a mesma pergunta não precisa ser processada duas vezes |
+| Nota das suas builds, apelido no jogo, nível e eidolon | Quando você roda o `/build` | Montar o card e o ranking do `/rank` |
+| Guias (`/guia`) e tier lists (`/tierlist`) que você escreve, com as imagens que você mesma envia | Enquanto você usa esses comandos | São o conteúdo que você está criando; ficam ligados a você pra você poder editar e continuar de onde parou |
+| Advertências de moderação (`/avisar`) | Quando um moderador do servidor te adverte | Histórico de moderação daquele servidor. Guarda também quem aplicou a advertência |
 
-```bash
-ollama pull nomic-embed-text     # embeddings, 768 dims — TEM que casar com pgvector.dimensions
-```
+Dados do jogo (personagens, relíquias, banners, materiais) não são seus dados pessoais e não estão
+nesta lista.
 
-O embedding é o único modelo fixo (trocá-lo muda a dimensão dos vetores e exige `reindex`). Os
-três slots de chat — **voz**, **cérebro**, **visão** — são escolhidos em runtime pelo
-`./bot.sh --model`, que lista o que já está instalado; um modelo multimodal serve os três de uma
-vez, e é assim que roda hoje. Este README deliberadamente **não** fixa nomes: eles mudam mais
-rápido que o texto, e a lista que vale é a do `ollama list`. Os defaults de fallback estão em
-[`application.yml`](src/main/resources/application.yml).
+## 2. O que eu NÃO guardo
 
-macOS, Linux e Windows via WSL2. O `bot.sh` detecta a infra por capacidade (`brew` → `pg_ctl` →
-`systemctl`), não por distro.
+- **Mensagens que não são pra mim.** Eu só processo uma mensagem se ela me menciona, responde uma
+  mensagem minha, ou faz parte de uma sessão que você abriu. Todo o resto do canal é descartado no
+  mesmo instante em que chega: não é lido, não é guardado, não vai pro modelo.
+- **Imagens que você anexa numa mensagem pra mim.** Elas são lidas na memória pra eu descrever o que
+  aparece nelas, e os bytes são jogados fora em seguida. (Exceção: a arte que você **envia de
+  propósito** pra ilustrar uma guia no `/guia` — essa é guardada, porque é o material da guia.)
+- **Seu status, seu jogo aberto, sua presença.** O bot nem recebe essa informação do Discord.
+- **Senhas, e-mail, telefone, dados de pagamento, sua conta HoYoverse.** Nada disso é pedido nem
+  aceito. Seu UID do jogo é um número público de perfil, não é login.
+- **Nada sobre você em DMs com outras pessoas.** Eu só enxergo minhas próprias DMs.
 
-## Começando
+Os registros técnicos do servidor (logs de erro) não gravam conteúdo de mensagem na configuração
+normal de operação.
 
-```bash
-# .env é por máquina e não tem template no repo — ver SETUP.md §5 pro mínimo
-./bot.sh reindex           # 1x: builda, sobe infra e constrói a base de conhecimento
-./bot.sh start             # sobe tudo e roda o bot em background
-```
+## 3. Por quanto tempo
 
-Migrations (Flyway) rodam sozinhas no primeiro boot. `mvn clean package` gera
-`target/cyrene-bot-2.0.0.jar`, que é o que o `bot.sh` executa.
+- **Conteúdo de mensagem: no máximo 30 dias.** Uma rotina automática apaga diariamente tudo que
+  passou disso — conversas guardadas, perguntas e respostas em cache. Não depende de ninguém pedir.
+- **Perfil, UID e notas de build:** ficam enquanto você quiser. Somem no instante em que você rodar
+  `/apagar-meus-dados`.
+- **Advertências de moderação:** não expiram. Elas são o registro do servidor sobre o que aconteceu
+  lá, não um dado da sua conta, e por isso não saem num pedido de exclusão.
+- **Guias e tier lists publicadas:** o conteúdo fica no ar pra comunidade, mas perde o vínculo com
+  você quando você apaga seus dados. Rascunhos não publicados somem junto com o resto.
 
-## Comandos
+## 4. Com quem isso é compartilhado
 
-24 comandos, registrados no boot a partir dos beans que implementam
-[`SlashCommand`](src/main/kotlin/com/cyrene/discord/command/SlashCommand.kt) — um `@Component` novo
-já entra no roteamento.
+**Com ninguém, para fins comerciais. Nada é vendido, alugado ou usado pra publicidade.**
 
-**HSR**
+O que sai da minha infraestrutura, e só o necessário:
 
-| Comando | O que faz |
+- **Discord** — porque é onde o bot vive.
+- **Enka.Network e Mihomo** (serviços públicos de vitrine de HSR) — recebem **o UID do jogo** quando
+  você roda `/build` ou `/perfil`. Nada do seu Discord vai junto.
+- **Buscadores** — quando eu não sei responder algo sobre o jogo com o que tenho, uma busca sobre
+  **o assunto da pergunta** é enviada, através de uma instância própria de metabusca, a mecanismos
+  de busca públicos. Vai o assunto pesquisado, não sua identidade.
+- **Serviços de dados do jogo** (calendário de eventos, imagens de personagens) — recebem só o
+  pedido do dado; nenhum dado seu.
+
+**A inteligência artificial roda na minha própria máquina.** O modelo de linguagem que escreve as
+respostas é executado localmente, em hardware meu. Suas mensagens não são enviadas pra OpenAI,
+Google, Anthropic ou qualquer outro provedor de IA.
+
+**Suas mensagens nunca são usadas pra treinar modelo nenhum.** Nem meu, nem de terceiros. O modelo
+lê a pergunta pra responder e não guarda nada disso.
+
+## 5. Seus direitos
+
+Pela LGPD (Lei 13.709/2018) você pode pedir acesso, correção, exclusão ou informação sobre o uso dos
+seus dados. Na prática, sem pedir nada a ninguém:
+
+| Você quer | Comando |
 |---|---|
-| `/hsr <pergunta>` | pergunta direta pra base — pula o portão de intenção, nunca é confundida com papo |
-| `/build <personagem> [arte]` | avalia a build da sua vitrine: nota StarRailScore, peça a peça, o que farmar. Zero LLM |
-| `/uid [uid]` | vincula seu UID do jogo (usado pelo `/build`). Sempre efêmero |
-| `/guia <personagem> [arte]` | formulário que gera o card de guia de build |
-| `/ascensao <personagem> [arte]` | card com o custo de ascensão + rastros |
-| `/tierlist <modo> [versao] [anonimo]` | tier list de fim de jogo (MoC / Pura Ficção / Sombra Apocalíptica) |
+| Ver ou trocar o que eu lembro de você | `/memoria` |
+| Trocar ou tirar seu UID do jogo | `/uid` |
+| **Apagar tudo, agora** | `/apagar-meus-dados confirmar:Verdadeiro` |
 
-**Conversa**
+`/apagar-meus-dados` roda na hora e não tem desfazer. Ele apaga seu perfil, seu nome guardado, seu
+UID, sua memória, suas conversas, suas notas de build e seus rascunhos. Rodando com
+`confirmar:Falso` ele só te mostra o que sairia, sem apagar nada.
 
-| Comando | O que faz |
-|---|---|
-| `/iniciar-conversa` · `/encerrar-conversa` | abre/fecha uma sessão: no meio dela não precisa mencionar |
-| `/memoria` | modal onde você escreve o que o bot deve lembrar de você. Campo vazio apaga |
-| `/apagar-meus-dados confirmar:` | apaga perfil, UID, memória, conversas e notas de build. Ficam os `/avisos` e o que você publicou, sem seu nome ([`Retencao`](src/main/kotlin/com/cyrene/conversation/Retencao.kt)) |
-| `/contexto-do-canal` | resumo do que está rolando no canal |
-| `/ia estado:ligar\|desligar` | chave geral da IA, só a dona do servidor. Desligada, moderação e `/build` continuam |
+Pra qualquer outro pedido — inclusive uma cópia dos seus dados — use o [Contato](#contato). Respondo
+em até 7 dias.
 
-**Moderação** — `/banir` `/desbanir` `/expulsar` `/mutar` `/desmutar` `/avisar` `/avisos` `/limpar`
-`/modo-lento` `/cargo` `/criar-canal` `/info-membro` `/info-servidor`.
+Você também pode simplesmente parar: não me mencionar é o suficiente pra eu não ler nem guardar mais
+nada seu. E a dona ou dono de um servidor pode desligar toda a parte de IA ali com `/ia`.
 
-Quem pode executar é declarado com `setDefaultPermissions(...)` e enforçado pelo **Discord**, antes
-da interação chegar aqui. [`ModerationGuards`](src/main/kotlin/com/cyrene/discord/command/ModerationGuards.kt)
-adiciona o que o Discord não checa: se o bot alcança o alvo e se quem chamou está **acima** dele na
-hierarquia.
+## 6. Segurança e onde os dados ficam
 
-> **A IA não pode moderar**: o modelo não tem nenhuma ferramenta, toda passada é texto-entra/
-> texto-sai. Pedido de moderação em prosa é respondido em código, apontando o comando certo.
->
-> `TEST_CHANNEL_IDS` restringe só as features de IA. DMs nunca são restringidas.
+Os dados ficam num banco de dados num servidor privado em `[PAÍS DO SERVIDOR]`, sem acesso público:
+só eu acesso, por conexão administrativa autenticada. **[CONFIRME ANTES DE PUBLICAR: o volume onde o
+banco e as cópias de segurança ficam é cifrado em repouso.]** Cópias de segurança são feitas
+diariamente e rodadas fora depois de 14 dias.
 
-## Como o bot responde
+Nenhum sistema é perfeito, e eu não posso prometer segurança absoluta. O que eu posso prometer é o
+mínimo de dado guardado: o bot não coleta nada que não seja usado por uma função que você mesma
+chamou.
 
-```
-imagem anexada?  ──► VisionService transcreve e anexa ao turno
-pedido de moderação em prosa?  ──► responde "use /banir" (sem LLM)
-portão de intenção  ──►  CHAT (voz em persona)  |  CONHECIMENTO ──┐
-                                                                  ▼
-   1. serviços determinísticos  (Plan/Build/Kit/Lore/Item/Roster) — SQL nas tabelas V17,
-      template fixo, sem LLM no corpo da resposta
-   2. cache de resposta         (pergunta normalizada → resposta; zero LLM num acerto)
-   3. grounding                 base local (pgvector) → web (SearXNG); notícia inverte a ordem
-   4. voz                       o modelo só reconta o que a fonte disse
-   5. juiz                      respostas de origem web passam por um veredito antes de sair
-```
+## 7. Menores de idade
 
-- **Contexto = cadeia de reply**, não o canal: menção nova começa limpa, responder sobe a thread.
-  Duas threads no mesmo canal nunca se misturam.
-- **A busca é decisão do código.** Pedir pra um modelo local "chame `lookupHsr`" falha de duas
-  formas: ele não chama, ou chama, volta vazio e inventa. Por isso o
-  [`KnowledgeGrounder`](src/main/kotlin/com/cyrene/knowledge/KnowledgeGrounder.kt) roda a
-  recuperação em ordem fixa e entrega pra voz **só** o que uma fonte real devolveu.
-- **Abstenção é a rede de segurança.** Sem fonte, o bot diz que não sabe. É o que torna "a
-  personagem Lilita do caminho Eclipse" impossível.
-- **Determinístico primeiro.** Toda pergunta que uma tabela responde vira template — pedir pra um
-  modelo pequeno recompor isso da prosa só adiciona entropia (efeito de uma relíquia migrando pra
-  outra).
-- Na tela: "digitando…", linha de status com botão **Cancelar**, resposta longa paginada com ◀ ▶
-  (o texto fica no Postgres, então os botões sobrevivem a restart), e no máximo 2 pipelines
-  batendo no Ollama ao mesmo tempo (cheio = "tô ocupada" na hora).
+O Discord exige 13 anos, ou mais, conforme o país. Este bot segue a mesma regra e não é dirigido a
+crianças. Se souber de dados de uma criança guardados aqui, me avise pelo [Contato](#contato) e eu
+apago.
 
-## Base de conhecimento
+## 8. Mudanças nesta política
 
-Fontes, nenhuma com chave de API: **starrailstation** (kit em PT + ícones), **nanoka** (JSON, versão
-do patch, arte de betas), **StarRailRes** (nomes en/pt/es), **fribbels** e **StarRailScore**
-(scoring do `/build`), **SearXNG** (busca web opcional).
+Mudanças ficam registradas no histórico deste repositório, com data. Se alguma delas mudar de
+verdade o que é guardado ou por quanto tempo, aviso no servidor de suporte antes de valer.
 
-```
-srs + nanoka ──populate──► tabelas V17 (Postgres) ──reindex──► vector_store (pgvector)
-```
+## Contato
 
-**Populate** busca upstream e escreve as tabelas ricas (upsert idempotente; colheita implausível é
-abortada sem gravar). **Reindex** só lê essas tabelas e re-embeda — carrega os documentos *antes* do
-truncate, então uma leitura vazia nunca apaga uma base que funciona. As tabelas são a fonte da
-verdade; o vector store é o fallback semântico.
+- Servidor de suporte: `[LINK DO CONVITE PERMANENTE]`
+- E-mail: `[SEU E-MAIL DE CONTATO]`
 
-O [`KbFreshnessCheck`](src/main/kotlin/com/cyrene/knowledge/KbFreshnessCheck.kt) roda diário e, com
-`HSR_AUTO_REINDEX=true` (padrão), refaz o ciclo sozinho quando sai patch. Manual: `./bot.sh reindex`.
+---
+---
 
-> Trocar o modelo de **embedding** exige reindex — a dimensão tem que casar com
-> `pgvector.dimensions`. Por isso é o único slot não trocável em runtime.
+# Privacy Policy — CyreneBot
 
-## `/build`
+**Last updated: August 13, 2026.** *(Portuguese is the version written for the bot's users; this
+English translation says the same things.)*
 
-`UID (/uid) → Enka → (falhou) mihomo → BuildAnalyzer → card`. Sem LLM em lugar nenhum.
+CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
+you, for how long, who it is shared with, and how to erase all of it.
 
-A Enka devolve o payload cru: os nomes são localizados pelo `StarRailResNames` e o painel de combate
-é **calculado** pelo [`StatPanel`](src/main/kotlin/com/cyrene/hsr/StatPanel.kt) — ninguém serve esse
-bloco pronto. O [`BuildAnalyzer`](src/main/kotlin/com/cyrene/hsr/BuildAnalyzer.kt) implementa a
-fórmula StarRailScore, então a nota bate com os scorers da comunidade; o julgamento (main stat
-errado, rolls mortos, o que farmar) também é código.
+**Data controller:** `[YOUR NAME OR HANDLE]` — see [Contact](#contact-1).
 
-## Cards e formulários
+## 1. What is stored, and why
 
-Quatro cards em Java2D. O renderer é uma **função pura** do seu modelo de entrada (`Ficha`,
-`Ascensao`, `Avaliacao`, `TierList`) — sem Spring, sem banco — o que faz os previews standalone
-valerem: o que renderiza local renderiza igual no canal.
-
-```bash
-mvn -q -DskipTests compile spring-boot:run \
-  -Dspring-boot.run.main-class=com.cyrene.card.AscensaoPreviewStandaloneKt \
-  -Dspring-boot.run.arguments=Blade
-```
-
-- Nada é elipsado: o texto quebra linha e depois encolhe a fonte até caber.
-- webp decodifica com `com.github.usefulness:webp-imageio` (libwebp via JNI). TwelveMonkeys deixa
-  um amarelado medido em toda splash — nunca ponha os dois no classpath.
-- Arte enviada pelo membro volta como preview privado com controles de enquadramento, compartilhados
-  por `/guia`, `/ascensao` e `/build` ([`Enquadramento`](src/main/kotlin/com/cyrene/card/Enquadramento.kt)).
-- **Formulários não têm mapa de sessão**: a chave do rascunho viaja no `customId` e as respostas
-  moram no Postgres. Sobrevivem a restart e ao timeout de 15 min, e dois cliques nunca discordam.
-  Guia publicado é imutável — o hash do spec é a identidade dele, então guias iguais reusam a imagem.
-
-## Banco de dados
-
-Flyway `V1`…`V33` em [`db/migration`](src/main/resources/db/migration), aplicadas no boot;
-`ddl-auto: validate` (o Hibernate nunca altera schema).
-
-| Área | Tabelas |
-|---|---|
-| Conversa / usuário | `conversa`, `troca_conversa`, `usuario` (nome, memória, `uid_hsr`) |
-| Moderação | `aviso` |
-| HSR | `personagem_hsr`, `reliquias`, `ornamentos_planos`, `cones_de_luz`, `builds`, `materiais`, `hsr_build_meta` |
-| Conhecimento | `vector_store`, `kb_meta`, `resposta_cache`, `resposta_paginada` |
-| Formulários | `guia`, `guia_arte`, `tier_list` |
-
-Colunas descritas em [tabelas_info.txt](tabelas_info.txt). Duas coisas que economizam tempo:
-`character_id` é o **id do jogo** (o mesmo de nanoka/mihomo/Enka/StarRailRes), e **nome não
-identifica personagem** — 14 linhas compartilham nome (as duas 7 de Março, os caminhos do
-Desbravador), o que é único é `(nome, caminho)`. Por isso o autocomplete manda id, não nome.
-
-Tabelas das migrations iniciais que **não existem mais**: `conversation_message` (V5),
-`perfil_usuario`/`fato_usuario`/`users_info` (V8), `mensagem_mencao`/`moderation_warning` (V9),
-`hsr_character` (V18).
-
-## Configuração
-
-Precedência: **`.bot.runtime`** (relido a cada 5s) → **`.env`** (semente do boot) →
-[`application.yml`](src/main/resources/application.yml) (defaults, com o porquê de cada valor
-documentado — ~40 knobs a mais que os abaixo, todos sobrescrevíveis por env var).
-
-| Variável | Default | O que é |
+| What | When it is collected | What for |
 |---|---|---|
-| `BOT_TOKEN` | — | obrigatório |
-| `BRAIN_MODEL_NAME` | — | passadas curtas: portão, condensador, juiz, retelling |
-| `VOICE_MODEL_NAME` | — | toda resposta visível — é esse que se troca pra melhorar a prosa |
-| `VISION_MODEL_NAME` | vazio | vazio = imagens ignoradas, sem erro |
-| `DB_USER` / `DB_PASSWORD` | `cyrene` | Postgres |
-| `OLLAMA_BASE_URL` | `localhost:11434` | |
-| `OLLAMA_NUM_CTX` | `16384` | precisa caber persona + cadeia de reply + texto de páginas web |
-| `OLLAMA_KNOWLEDGE_NUM_PREDICT` | `2048` | orçamento do retelling (512 esmaga um kit completo) |
-| `TEST_CHANNEL_IDS` | vazio | allow-list de canais, só features de IA |
-| `SEARXNG_URL` | `localhost:8888` | vazio = busca web desligada |
-| `HSR_REINDEX` | `false` | `true` reconstrói o vector store no próximo boot |
-| `BOT_PERSONALITY_FILE` | (comentado) | sobrescreve a persona embutida — deixe comentado pro default |
+| Your Discord user ID and current display name | The first time you talk to the bot or use a command | It is what ties everything together: your score, your memory, your UID. The name is so the bot can address you by name |
+| The text you write in `/memoria` | Only when you open `/memoria` and write something | Remembering you between conversations. It is free-form: you decide what goes there |
+| Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank` |
+| The content of messages you address to the bot | An @mention, a reply to one of the bot's messages, or a session you opened with `/iniciar-conversa` | Understanding and answering the question. `/iniciar-conversa` sessions store the question/answer pair so the conversation keeps its thread |
+| Game questions and their answers | When you ask the bot about HSR | A cache, so the same question is not processed twice |
+| Your build scores, in-game nickname, level and eidolon | When you run `/build` | Drawing the card and the `/rank` leaderboard |
+| Guides (`/guia`) and tier lists (`/tierlist`) you write, including art you upload yourself | While you use those commands | It is the content you are creating; it stays linked to you so you can edit it and resume it |
+| Moderation warnings (`/avisar`) | When a server moderator warns you | That server's moderation history. It also records which moderator issued it |
 
-**`.bot.runtime`** é um `chave=valor` (`voice=` `brain=` `vision=` `ai=`) escrito por
-`./bot.sh --model` e pelo `/ia` no Discord, lido a cada 5s por
-[`RuntimeConfig`](src/main/kotlin/com/cyrene/config/RuntimeConfig.kt). **Ganha do `.env`** — apague
-pra voltar. Funciona com o bot parado; o próximo boot lê. Mesmo mecanismo do `.bot.activity`
-(atividade do Discord sem restart). É arquivo e não banco/actuator porque isso é config da máquina,
-e a app roda com `web-application-type: none`.
+Game data (characters, relics, banners, materials) is not personal data and is not in this list.
 
-Persona: [`prompts/cyrene-personality.md`](src/main/resources/prompts/cyrene-personality.md). O
-`{nome}` fica na **última** linha de propósito — tudo acima é idêntico entre usuários, logo
-cacheável como prefixo KV.
+## 2. What is NOT stored
 
-## Operação
+- **Messages that are not addressed to the bot.** A message is only processed if it mentions the
+  bot, replies to the bot, or belongs to a session you opened. Everything else in the channel is
+  discarded the moment it arrives: not read, not stored, never sent to the model.
+- **Images you attach to a message for the bot.** They are read in memory so the bot can describe
+  what they show, and the bytes are discarded immediately after. (Exception: art you **deliberately
+  upload** to illustrate a guide in `/guia` — that is stored, because it is the guide's material.)
+- **Your status, your current game, your presence.** The bot does not even receive that from
+  Discord.
+- **Passwords, email, phone number, payment details, your HoYoverse account.** None of it is asked
+  for or accepted. Your in-game UID is a public profile number, not a login.
+- **Anything about you in other people's DMs.** The bot only sees its own DMs.
 
-| Comando | O que faz |
+Server logs do not record message content under normal operating configuration.
+
+## 3. How long it is kept
+
+- **Message content: 30 days at most.** An automatic daily job deletes anything older — stored
+  conversations and cached questions and answers. It does not depend on anyone asking.
+- **Profile, UID and build scores:** kept for as long as you want them. They are gone the moment you
+  run `/apagar-meus-dados`.
+- **Moderation warnings:** they do not expire. They are the server's record of what happened there
+  rather than data about your account, which is why they are not covered by a deletion request.
+- **Published guides and tier lists:** the content stays up for the community, but loses its link to
+  you when you erase your data. Unpublished drafts are deleted along with everything else.
+
+## 4. Who it is shared with
+
+**No one, for commercial purposes. Nothing is sold, rented or used for advertising.**
+
+What leaves the bot's infrastructure, and only as needed:
+
+- **Discord** — because that is where the bot lives.
+- **Enka.Network and Mihomo** (public HSR showcase services) — they receive **the in-game UID** when
+  you run `/build` or `/perfil`. Nothing about your Discord account goes with it.
+- **Search engines** — when the bot cannot answer a game question from what it already has, a search
+  about **the subject of the question** is sent, through a self-hosted metasearch instance, to
+  public search engines. The subject is sent, not your identity.
+- **Game data services** (event calendar, character images) — they receive only the request for the
+  data; none of yours.
+
+**The AI runs on the developer's own machine.** The language model that writes the replies is
+executed locally, on owned hardware. Your messages are not sent to OpenAI, Google, Anthropic or any
+other AI provider.
+
+**Your messages are never used to train any model.** Not the developer's, not a third party's. The
+model reads the question in order to answer it and retains nothing.
+
+## 5. Your rights
+
+Under Brazil's LGPD (Law 13.709/2018) you may request access, correction, deletion, or information
+about how your data is used. In practice, without asking anyone:
+
+| What you want | Command |
 |---|---|
-| `./bot.sh start` | sobe infra + bot em background (PID em `.bot.pid`, log em `logs/bot.log`) |
-| `./bot.sh restart` | recompila e reinicia só o bot — a infra fica de pé |
-| `./bot.sh stop [--all]` | para o bot; `--all` derruba SearXNG/colima também |
-| `./bot.sh status` · `logs` | o que está no ar · `tail -f` |
-| `./bot.sh reindex` | reconstrói a base HSR até o fim (minutos) |
-| `./bot.sh --model` | menu interativo pra trocar voz/cérebro/visão sem restart |
-| `./bot.sh activity <tipo> "texto"` | muda a atividade sem restart |
+| See or change what the bot remembers about you | `/memoria` |
+| Change or remove your in-game UID | `/uid` |
+| **Erase everything, right now** | `/apagar-meus-dados confirmar:Verdadeiro` |
 
-Com o bot num host 24/7 ([SETUP.md §9](SETUP.md)), mais quatro — as duas primeiras rodam **no
-Mac**, as duas últimas **no servidor**, por cron:
+`/apagar-meus-dados` runs immediately and cannot be undone. It erases your profile, stored name,
+UID, memory, conversations, build scores and drafts. Running it with `confirmar:Falso` only shows
+you what would be removed, without deleting anything.
 
-| Comando | Onde | O que faz |
-|---|---|---|
-| `./bot.sh deploy` | Mac | push do commit atual, e do lado de lá: backup → pull → restart → status. Recusa se houver coisa não commitada |
-| `./bot.sh pull-db` | Mac | **DROPA** o banco local e põe a cópia da produção no lugar. Só neste sentido |
-| `./bot.sh backup` | servidor | `pg_dump` diário (cron `17 4 * * *`), mantém os 14 últimos e rotaciona o log junto |
-| `./bot.sh heartbeat` | servidor | cron de 1 min: Ollama fora do ar → desliga a IA sozinho; voltou → religa (só o que ele mesmo desligou) |
+For any other request — including a copy of your data — use [Contact](#contact-1). Answered within
+7 days.
 
-> `CYRENE_ROLE=ollama` no `.env` do Mac faz o `./bot.sh start` daqui recusar. Sem isso, duas
-> instâncias no mesmo token respondem à mesma mensagem e nenhuma das duas avisa.
+You can also simply stop: not mentioning the bot is enough for it to stop reading or storing
+anything about you. A server owner can also switch off every AI feature there with `/ia`.
 
-Conteúdo de mensagem não passa de **30 dias** no banco: a [`Retencao`](src/main/kotlin/com/cyrene/conversation/Retencao.kt)
-poda `troca_conversa`, `conversa`, `resposta_cache` e `resposta_paginada` uma vez por dia, dentro do
-próprio bot (sem cron). Perfil e notas do `/rank` ficam — é o que o formulário de intents do Discord
-responde, e mudar um dos dois sem mudar o outro é o jeito de a resposta virar mentira.
+## 6. Security and where the data lives
 
-Sem métricas HTTP (não há servidor web): o [`AiMetrics`](src/main/kotlin/com/cyrene/ai/AiMetrics.kt)
-cronometra cada passada e despeja um resumo no log de tempos em tempos. `com.cyrene: DEBUG` mostra
-as decisões do portão e do grounder.
+Data is stored in a database on a private server in `[SERVER COUNTRY]`, not publicly reachable: only
+the developer accesses it, over an authenticated administrative connection. **[CONFIRM BEFORE
+PUBLISHING: the volume holding the database and its backups is encrypted at rest.]** Backups run
+daily and are rotated out after 14 days.
 
-## Testes
+No system is perfect and absolute security cannot be promised. What can be promised is how little is
+kept: the bot collects nothing that is not used by a feature you invoked yourself.
 
-```bash
-mvn test                                                # ~450 testes, sem banco e sem Ollama
-RUN_DB_TESTS=true mvn test -Dtest=AnswerPathsLiveTest   # precisa de Postgres populado
-RUN_EVAL=true     mvn test -Dtest=LlmEvalTest           # eval de roteamento contra o Ollama
-```
+## 7. Children
 
-Fixtures de JSON real (srs, nanoka, Enka) em `src/test/resources` — mudança de formato no upstream
-aparece como teste vermelho, não como bug em produção.
+Discord requires users to be 13, or older depending on the country. This bot follows the same rule
+and is not directed at children. If you know of a child's data stored here, tell the developer
+through [Contact](#contact-1) and it will be deleted.
 
-## Estrutura
+## 8. Changes to this policy
 
-```
-src/main/kotlin/com/cyrene/
-├── ai/            pipeline de LLM: orquestração, portão, visão, métricas, gate de concorrência
-├── card/          renderers Java2D + os modelos que eles desenham
-├── config/        BotProperties (todos os knobs), RuntimeConfig (troca a quente)
-├── conversation/  sessões, histórico, usuário e memória
-├── discord/       JDA: bootstrap, 24 comandos, listeners, paginador/status/typing
-├── guia/          formulário do /guia
-├── hsr/           dados do jogo: harvesters, Enka/mihomo, gazetteer, scorer, painel de status
-├── knowledge/     grounding, respostas determinísticas, ingestão, busca web, cache
-├── moderation/    entidade de aviso
-└── tier/          formulário do /tierlist
+Changes are recorded in this repository's history, with dates. If one of them materially changes
+what is stored or for how long, it will be announced in the support server before taking effect.
 
-bot.sh · docker/searxng/ · SETUP.md · src/main/resources/{application.yml,db/migration,prompts}
-skills/            legado da era de tool-calling — nenhum código lê essa pasta hoje
-```
+## Contact
 
-## Problemas comuns
-
-- **`extension "vector" is not available`** — pgvector não instalado, ou instalado noutra versão do
-  Postgres. Precisa de superuser uma vez: `CREATE EXTENSION vector;`.
-- **Postgres "sumiu" depois de um `brew upgrade`** — formula versionada é keg-only; reinicie o
-  serviço e desconfie de caminhos com `@14`/`@18` hardcoded.
-- **"Não sei" sobre personagem que existe** — base não indexada ou patch mais novo que o índice:
-  `./bot.sh reindex`.
-- **Menção perde contexto** — `OLLAMA_NUM_CTX` baixo demais (o default 4096 do Ollama truncava o
-  histórico e sobrava só a persona).
-- **Primeira resposta após silêncio demora 30s** — Ollama descarregou os pesos; suba
-  `OLLAMA_KEEP_ALIVE` (`-1m` = nunca).
-- **Vitrine do `/build` vazia** — showcase precisa estar público no jogo. Em rede corporativa a Enka
-  pode cair em bloqueio de categoria "Games"; `HSR_SHOWCASE_SOURCE=mihomo` contorna.
-- **Trocou o modelo e nada mudou** — `.bot.runtime` ganha do `.env`.
+- Support server: `[PERMANENT INVITE LINK]`
+- Email: `[YOUR CONTACT EMAIL]`
