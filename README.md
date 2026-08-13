@@ -5,7 +5,7 @@
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado e como apagar tudo.
 
-**Responsável pelos dados:** `[SEU NOME OU APELIDO]` — contato em [Contato](#contato).
+**Responsável pelos dados:** `HEITOR OLIVEIRA RAMOS` — contato em [Contato](#contato).
 
 ---
 
@@ -97,8 +97,8 @@ nada seu. E a dona ou dono de um servidor pode desligar toda a parte de IA ali c
 
 ## 6. Segurança e onde os dados ficam
 
-Os dados ficam num banco de dados num servidor privado em `[PAÍS DO SERVIDOR]`, sem acesso público:
-só eu acesso, por conexão administrativa autenticada. **[CONFIRME ANTES DE PUBLICAR: o volume onde o
+Os dados ficam num banco de dados num servidor privado em `Falkenstein, Alemanha`, sem acesso público:
+só eu acesso, por conexão administrativa autenticada. **O volume onde o
 banco e as cópias de segurança ficam é cifrado em repouso.]** Cópias de segurança são feitas
 diariamente e rodadas fora depois de 14 dias.
 
@@ -119,8 +119,8 @@ verdade o que é guardado ou por quanto tempo, aviso no servidor de suporte ante
 
 ## Contato
 
-- Servidor de suporte: `[LINK DO CONVITE PERMANENTE]`
-- E-mail: `[SEU E-MAIL DE CONTATO]`
+- Servidor de suporte: `discord.gg/pompom`
+- E-mail: `pompomnius@gmail.com`
 
 ---
 ---
@@ -133,7 +133,7 @@ English translation says the same things.)*
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
 you, for how long, who it is shared with, and how to erase all of it.
 
-**Data controller:** `[YOUR NAME OR HANDLE]` — see [Contact](#contact-1).
+**Data controller:** `HEITOR OLIVEIRA RAMOS` — see [Contact](#contact-1).
 
 ## 1. What is stored, and why
 
@@ -222,9 +222,8 @@ anything about you. A server owner can also switch off every AI feature there wi
 
 ## 6. Security and where the data lives
 
-Data is stored in a database on a private server in `[SERVER COUNTRY]`, not publicly reachable: only
-the developer accesses it, over an authenticated administrative connection. **[CONFIRM BEFORE
-PUBLISHING: the volume holding the database and its backups is encrypted at rest.]** Backups run
+Data is stored in a database on a private server in `Falkenstein, Germany`, not publicly reachable: only
+the developer accesses it, over an authenticated administrative connection. **The volume holding the database and its backups is encrypted at rest.]** Backups run
 daily and are rotated out after 14 days.
 
 No system is perfect and absolute security cannot be promised. What can be promised is how little is
@@ -243,5 +242,5 @@ what is stored or for how long, it will be announced in the support server befor
 
 ## Contact
 
-- Support server: `[PERMANENT INVITE LINK]`
-- Email: `[YOUR CONTACT EMAIL]`
+- Support server: `discord.gg/pompom`
+- Email: `pompomnius@gmail.com`
