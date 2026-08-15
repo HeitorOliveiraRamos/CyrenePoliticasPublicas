@@ -1,11 +1,12 @@
 # Política de Privacidade — CyreneBot
 
-**Última atualização: 13 de agosto de 2026.** *(English version below / versão em inglês no fim.)*
+**Última atualização: 14 de agosto de 2026.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado e como apagar tudo.
 
-**Responsável pelos dados:** `HEITOR OLIVEIRA RAMOS` — contato em [Contato](#contato).
+**Responsável pelos dados:** Heitor Oliveira Ramos — contato em [Contato](#contato).
+As regras de uso do bot estão nos [Termos de Serviço](TERMOS.md).
 
 ---
 
@@ -97,10 +98,10 @@ nada seu. E a dona ou dono de um servidor pode desligar toda a parte de IA ali c
 
 ## 6. Segurança e onde os dados ficam
 
-Os dados ficam num banco de dados num servidor privado em `Falkenstein, Alemanha`, sem acesso público:
-só eu acesso, por conexão administrativa autenticada. **O volume onde o
-banco e as cópias de segurança ficam é cifrado em repouso.]** Cópias de segurança são feitas
-diariamente e rodadas fora depois de 14 dias.
+Os dados ficam num banco de dados num servidor privado na Alemanha, sem acesso público: só eu
+acesso, por conexão administrativa autenticada. **O volume onde o banco e as cópias de segurança
+ficam é cifrado em repouso.** Cópias de segurança são feitas diariamente e rodadas fora depois de
+14 dias.
 
 Nenhum sistema é perfeito, e eu não posso prometer segurança absoluta. O que eu posso prometer é o
 mínimo de dado guardado: o bot não coleta nada que não seja usado por uma função que você mesma
@@ -119,21 +120,22 @@ verdade o que é guardado ou por quanto tempo, aviso no servidor de suporte ante
 
 ## Contato
 
-- Servidor de suporte: `discord.gg/pompom`
-- E-mail: `pompomnius@gmail.com`
+- Servidor de suporte: https://discord.gg/pompom
+- E-mail: pompomnius@gmail.com
 
 ---
 ---
 
 # Privacy Policy — CyreneBot
 
-**Last updated: August 13, 2026.** *(Portuguese is the version written for the bot's users; this
+**Last updated: August 14, 2026.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
 you, for how long, who it is shared with, and how to erase all of it.
 
-**Data controller:** `HEITOR OLIVEIRA RAMOS` — see [Contact](#contact-1).
+**Data controller:** Heitor Oliveira Ramos — see [Contact](#contact-1).
+The rules for using the bot are in the [Terms of Service](TERMOS.md).
 
 ## 1. What is stored, and why
 
@@ -222,9 +224,10 @@ anything about you. A server owner can also switch off every AI feature there wi
 
 ## 6. Security and where the data lives
 
-Data is stored in a database on a private server in `Falkenstein, Germany`, not publicly reachable: only
-the developer accesses it, over an authenticated administrative connection. **The volume holding the database and its backups is encrypted at rest.]** Backups run
-daily and are rotated out after 14 days.
+Data is stored in a database on a private server in Germany, not publicly reachable: only the
+developer accesses it, over an authenticated administrative connection. **The volume holding the
+database and its backups is encrypted at rest.** Backups run daily and are rotated out after 14
+days.
 
 No system is perfect and absolute security cannot be promised. What can be promised is how little is
 kept: the bot collects nothing that is not used by a feature you invoked yourself.
@@ -242,5 +245,5 @@ what is stored or for how long, it will be announced in the support server befor
 
 ## Contact
 
-- Support server: `discord.gg/pompom`
-- Email: `pompomnius@gmail.com`
+- Support server: https://discord.gg/pompom
+- Email: pompomnius@gmail.com
