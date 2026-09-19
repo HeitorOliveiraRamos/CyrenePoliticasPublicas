@@ -1,6 +1,6 @@
 # Política de Privacidade — CyreneBot
 
-**Última atualização: 14 de agosto de 2026.** *(English version below / versão em inglês no fim.)*
+**Última atualização: 19 de setembro de 2026.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado e como apagar tudo.
@@ -44,7 +44,7 @@ normal de operação.
 
 ## 3. Por quanto tempo
 
-- **Conteúdo de mensagem: no máximo 30 dias.** Uma rotina automática apaga diariamente tudo que
+- **Conteúdo de mensagem sob meu controle: no máximo 30 dias.** Uma rotina automática apaga diariamente tudo que
   passou disso — conversas guardadas, perguntas e respostas em cache. Não depende de ninguém pedir.
 - **Perfil, UID e notas de build:** ficam enquanto você quiser. Somem no instante em que você rodar
   `/apagar-meus-dados`.
@@ -68,12 +68,22 @@ O que sai da minha infraestrutura, e só o necessário:
 - **Serviços de dados do jogo** (calendário de eventos, imagens de personagens) — recebem só o
   pedido do dado; nenhum dado seu.
 
-**A inteligência artificial roda na minha própria máquina.** O modelo de linguagem que escreve as
-respostas é executado localmente, em hardware meu. Suas mensagens não são enviadas pra OpenAI,
-Google, Anthropic ou qualquer outro provedor de IA.
+**A IA pode usar processamento local ou provedores externos, conforme a configuração da instância.**
+Ollama, llama.cpp e o adaptador local de classificação rodam em infraestrutura própria. Quando o
+roteador **Jev/TypeSafe via Vercel AI Gateway** está configurado para o serviço externo, ele recebe
+a mensagem atual e até seis turnos anteriores para identificar a intenção. Nomes, menções e outros
+dados pessoais escritos nesses textos podem fazer parte desse envio. O roteador não recebe o
+banco inteiro nem uma cópia separada do perfil ou da memória.
 
-**Suas mensagens nunca são usadas pra treinar modelo nenhum.** Nem meu, nem de terceiros. O modelo
-lê a pergunta pra responder e não guarda nada disso.
+Se um provedor externo de geração, como **OpenCode Zen**, for habilitado pelo responsável, ele
+poderá receber a pergunta, o histórico e o contexto necessário à resposta, incluindo a memória
+que você cadastrou; o slot de visão também poderá enviar a imagem endereçada ao bot. Não envie
+segredos ou informações sensíveis ao bot. Consulte o responsável para saber a configuração ativa.
+
+**Eu não uso suas mensagens para treinar modelos.** O processamento, os prazos de retenção e a
+localização dos dados nos serviços externos dependem das condições desses provedores; a regra
+local de 30 dias e o comando de exclusão não são uma garantia sobre cópias de terceiros. Para
+informações ou pedidos relativos a esse processamento, use o [Contato](#contato).
 
 ## 5. Seus direitos
 
@@ -116,7 +126,7 @@ apago.
 ## 8. Mudanças nesta política
 
 Mudanças ficam registradas no histórico deste repositório, com data. Se alguma delas mudar de
-verdade o que é guardado ou por quanto tempo, aviso no servidor de suporte antes de valer.
+verdade o que é guardado, por quanto tempo ou com quais provedores é compartilhado, aviso no servidor de suporte antes de valer.
 
 ## Contato
 
@@ -128,7 +138,7 @@ verdade o que é guardado ou por quanto tempo, aviso no servidor de suporte ante
 
 # Privacy Policy — CyreneBot
 
-**Last updated: August 14, 2026.** *(Portuguese is the version written for the bot's users; this
+**Last updated: September 19, 2026.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
@@ -170,7 +180,7 @@ Server logs do not record message content under normal operating configuration.
 
 ## 3. How long it is kept
 
-- **Message content: 30 days at most.** An automatic daily job deletes anything older — stored
+- **Message content under the developer's control: 30 days at most.** An automatic daily job deletes anything older — stored
   conversations and cached questions and answers. It does not depend on anyone asking.
 - **Profile, UID and build scores:** kept for as long as you want them. They are gone the moment you
   run `/apagar-meus-dados`.
@@ -194,12 +204,22 @@ What leaves the bot's infrastructure, and only as needed:
 - **Game data services** (event calendar, character images) — they receive only the request for the
   data; none of yours.
 
-**The AI runs on the developer's own machine.** The language model that writes the replies is
-executed locally, on owned hardware. Your messages are not sent to OpenAI, Google, Anthropic or any
-other AI provider.
+**AI processing may be local or use external providers, depending on the instance configuration.**
+Ollama, llama.cpp and the local classification adapter run on owned infrastructure. When the
+**Jev/TypeSafe router through Vercel AI Gateway** is configured to use the external service, it
+receives the current message and up to six previous turns to identify intent. Names, mentions and
+other personal data written in those texts may be included. The router does not receive the
+entire database or a separate copy of your profile or memory.
 
-**Your messages are never used to train any model.** Not the developer's, not a third party's. The
-model reads the question in order to answer it and retains nothing.
+If an external generation provider, such as **OpenCode Zen**, is enabled by the operator, it may
+receive the question, history and context needed to answer, including your saved memory; the
+vision slot may also send an image addressed to the bot. Do not send secrets or sensitive
+information to the bot. Contact the operator to learn which configuration is active.
+
+**The developer does not use your messages to train models.** Processing, retention periods and
+data locations at external services depend on those providers' terms; the local 30-day rule and
+deletion command are not a guarantee about third-party copies. For information or requests
+concerning this processing, use [Contact](#contact-1).
 
 ## 5. Your rights
 
@@ -241,7 +261,7 @@ through [Contact](#contact-1) and it will be deleted.
 ## 8. Changes to this policy
 
 Changes are recorded in this repository's history, with dates. If one of them materially changes
-what is stored or for how long, it will be announced in the support server before taking effect.
+what is stored, for how long or which providers receive it, it will be announced in the support server before taking effect.
 
 ## Contact
 

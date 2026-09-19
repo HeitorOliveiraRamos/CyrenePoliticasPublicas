@@ -1,6 +1,6 @@
 # Termos de Serviço — CyreneBot
 
-**Última atualização: 13 de agosto de 2026.** *(English version below / versão em inglês no fim.)*
+**Última atualização: 19 de setembro de 2026.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail, mantido por `HEITOR OLIVEIRA RAMOS`
 como projeto pessoal e gratuito. Esta página é o combinado entre você e eu sobre o uso dele: o que
@@ -74,6 +74,10 @@ de direito autoral, sem aviso prévio.
 no ar pra comunidade. Quer a guia fora do ar, e não só desvinculada? Peça pelo [Contato](#contato).
 
 ## 5. As respostas da IA
+
+O processamento pode ser local ou usar provedores externos, conforme a configuração informada na
+[Política de Privacidade, seção 4](README.md#4-com-quem-isso-é-compartilhado). Não envie segredos ou
+dados sensíveis. Isso não muda a gratuidade do bot para você.
 
 **O modelo erra.** Trate as respostas como o palpite de alguém que leu bastante sobre o jogo, não
 como fonte oficial. Dado de jogo muda a cada patch, e o que o bot diz pode estar velho, incompleto
@@ -156,7 +160,7 @@ caso em que vale o foro do seu domicílio, como manda o CDC.
 
 # Terms of Service — CyreneBot
 
-**Last updated: August 13, 2026.** *(Portuguese is the version written for the bot's users; this
+**Last updated: September 19, 2026.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail, maintained by `HEITOR OLIVEIRA RAMOS`
@@ -232,6 +236,10 @@ stay up for the community. Want the guide taken down, not just unlinked? Ask thr
 [Contact](#contact-1).
 
 ## 5. The AI's answers
+
+Processing may be local or use external providers, depending on the configuration described in
+[Privacy Policy, section 4](README.md#4-who-it-is-shared-with). Do not send secrets or sensitive
+data. This does not change the fact that the bot is free for you.
 
 **The model gets things wrong.** Treat its answers as the guess of someone who has read a lot about
 the game, not as an official source. Game data changes every patch, and what the bot says may be
