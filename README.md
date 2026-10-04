@@ -39,8 +39,10 @@ nesta lista.
   aceito. Seu UID do jogo é um número público de perfil, não é login.
 - **Nada sobre você em DMs com outras pessoas.** Eu só enxergo minhas próprias DMs.
 
-Os registros técnicos do servidor (logs de erro) não gravam conteúdo de mensagem na configuração
-normal de operação.
+Os registros técnicos do servidor não gravam perguntas, fontes ou respostas completas. Para diagnosticar
+consultas de equipes, podem registrar IDs de personagens e estados dos campos consultados; o verificador
+pode registrar até três problemas validados de até 240 caracteres por revisão, com identificadores conhecidos
+de conta e UID substituídos. Esses diagnósticos não incluem os identificadores conhecidos de dono ou UID.
 
 ## 3. Por quanto tempo
 
@@ -176,7 +178,10 @@ Game data (characters, relics, banners, materials) is not personal data and is n
   for or accepted. Your in-game UID is a public profile number, not a login.
 - **Anything about you in other people's DMs.** The bot only sees its own DMs.
 
-Server logs do not record message content under normal operating configuration.
+Server logs do not record full questions, sources, or answers. Team-query diagnostics may include
+character IDs and queried-field states. The verifier may log up to three validated issues of up to
+240 characters per review, with known account identifiers and game UIDs replaced. These diagnostics
+do not include known owner identifiers or game UIDs.
 
 ## 3. How long it is kept
 
