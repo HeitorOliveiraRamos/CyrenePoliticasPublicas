@@ -70,21 +70,16 @@ O que sai da minha infraestrutura, e só o necessário:
 - **Serviços de dados do jogo** (calendário de eventos, imagens de personagens) — recebem só o
   pedido do dado; nenhum dado seu.
 
-**A IA pode usar processamento local ou provedores externos, conforme a configuração da instância.**
-Ollama, llama.cpp e o adaptador local de classificação rodam em infraestrutura própria. Quando o
-roteador **Jev/TypeSafe via Vercel AI Gateway** está configurado para o serviço externo, ele recebe
-a mensagem atual e até seis turnos anteriores para identificar a intenção. Nomes, menções e outros
-dados pessoais escritos nesses textos podem fazer parte desse envio. O roteador não recebe o
-banco inteiro nem uma cópia separada do perfil ou da memória.
+**O processamento de IA pode ocorrer localmente ou por provedores externos, conforme a configuração
+habilitada pelo responsável.** Quando um provedor externo é utilizado, os textos, imagens e contexto
+necessários à operação podem ser enviados a esse serviço, incluindo informações pessoais presentes
+nesses conteúdos e memórias autorizadas.
 
-Se um provedor externo de geração, como **OpenCode Zen**, for habilitado pelo responsável, ele
-poderá receber a pergunta, o histórico e o contexto necessário à resposta, incluindo a memória
-que você cadastrou; o slot de visão também poderá enviar a imagem endereçada ao bot. Não envie
-segredos ou informações sensíveis ao bot. Consulte o responsável para saber a configuração ativa.
+Os prazos de exclusão e controles descritos nesta política referem-se aos dados sob controle do
+responsável pelo bot. Eles não garantem a exclusão de cópias mantidas por provedores externos.
 
-**Eu não uso suas mensagens para treinar modelos.** O processamento, os prazos de retenção e a
-localização dos dados nos serviços externos dependem das condições desses provedores; a regra
-local de 30 dias e o comando de exclusão não são uma garantia sobre cópias de terceiros. Para
+As práticas de retenção e uso para treinamento desses terceiros dependem das condições aplicáveis
+ao serviço utilizado; esta política não promete condições que não tenham sido verificadas. Para
 informações ou pedidos relativos a esse processamento, use o [Contato](#contato).
 
 ## 5. Seus direitos
@@ -209,22 +204,17 @@ What leaves the bot's infrastructure, and only as needed:
 - **Game data services** (event calendar, character images) — they receive only the request for the
   data; none of yours.
 
-**AI processing may be local or use external providers, depending on the instance configuration.**
-Ollama, llama.cpp and the local classification adapter run on owned infrastructure. When the
-**Jev/TypeSafe router through Vercel AI Gateway** is configured to use the external service, it
-receives the current message and up to six previous turns to identify intent. Names, mentions and
-other personal data written in those texts may be included. The router does not receive the
-entire database or a separate copy of your profile or memory.
+**AI processing may take place locally or through external providers, depending on the configuration
+enabled by the operator.** When an external provider is used, the text, images and context needed
+for the operation may be sent to that service, including personal information contained in that
+content and authorized memories.
 
-If an external generation provider, such as **OpenCode Zen**, is enabled by the operator, it may
-receive the question, history and context needed to answer, including your saved memory; the
-vision slot may also send an image addressed to the bot. Do not send secrets or sensitive
-information to the bot. Contact the operator to learn which configuration is active.
+The deletion periods and controls described in this policy apply to data under the bot operator's
+control. They do not guarantee the deletion of copies held by external providers.
 
-**The developer does not use your messages to train models.** Processing, retention periods and
-data locations at external services depend on those providers' terms; the local 30-day rule and
-deletion command are not a guarantee about third-party copies. For information or requests
-concerning this processing, use [Contact](#contact-1).
+Those third parties' retention and use of data for training depend on the terms applicable to the
+service used; this policy makes no promises about conditions that have not been verified. For
+information or requests concerning this processing, use [Contact](#contact-1).
 
 ## 5. Your rights
 
