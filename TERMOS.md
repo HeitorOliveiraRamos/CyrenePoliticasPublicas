@@ -1,13 +1,15 @@
 # Termos de Serviço — CyreneBot
 
-**Última atualização: 19 de setembro de 2026.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 6 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail, mantido por `HEITOR OLIVEIRA RAMOS`
 como projeto pessoal e gratuito. Esta página é o combinado entre você e eu sobre o uso dele: o que
 você pode fazer, o que eu garanto (pouco) e o que acontece quando algo dá errado.
 
 Usar o bot — mandar um comando, me mencionar, ou deixar o bot num servidor seu — é aceitar o que
-está escrito aqui. Se não concorda, é só não usar.
+está escrito aqui. Se não concorda, não use. Isso não significa que mensagens de quem não usa
+o bot nunca sejam processadas: recortes de contexto podem conter falas de terceiros, conforme a
+política. A solicitação de outra pessoa não constitui seu consentimento individual.
 
 O que o bot guarda sobre você está na [Política de Privacidade](README.md), que faz parte destes
 termos.
@@ -62,7 +64,8 @@ autoria é sua e eu não reivindico nada disso.
 Ao **publicar** uma guia ou tier list, você me dá permissão de guardar, formatar e exibir aquele
 conteúdo dentro do bot, pra qualquer pessoa que rode os comandos — sem exclusividade, sem
 pagamento, enquanto o conteúdo estiver publicado. É o mínimo pro comando funcionar. Não uso seu
-conteúdo pra mais nada e não treino modelo nenhum com ele.
+conteúdo fora dessas finalidades por essa permissão. A publicação não autoriza treinamento de
+modelos; sobre o processamento por IA e as condições de terceiros, veja a política de privacidade.
 
 Você garante que o que sobe é seu, ou que você tem direito de usar. Arte de outra pessoa sem
 permissão, não.
@@ -78,6 +81,26 @@ no ar pra comunidade. Quer a guia fora do ar, e não só desvinculada? Peça pel
 O processamento pode ser local ou usar provedores externos, conforme a configuração informada na
 [Política de Privacidade, seção 4](README.md#4-com-quem-isso-é-compartilhado). Não envie segredos ou
 dados sensíveis. Isso não muda a gratuidade do bot para você.
+
+Os provedores podem variar durante testes e operação; o responsável avalia frequentemente o bot
+com ChatGPT/Luna. Esses testes não confirmam nem autorizam o uso das mensagens pelo provedor
+para treinar ou melhorar modelos. A política de privacidade descreve as regras oficiais distintas
+por serviço. O responsável confirmou conta Plus pessoal e desativação de **Improve the model for
+everyone** em 6 de outubro de 2026, às 19:09 UTC, para novas conversas/tarefas, com as ressalvas
+da política. As condições aplicáveis ao acesso do bot e os controles adicionais ainda precisam de
+revisão antes da publicação. Essa informação não concede permissão para usar conteúdo do Discord nem
+declara conformidade com as políticas do Discord ou do provedor.
+
+O provedor opcional Sign in with ChatGPT usa a franquia da assinatura do responsável e pode
+ficar indisponível por limites ou revogação; não cobra do usuário Discord nem muda automaticamente
+para API paga. Memórias aprendidas também podem estar erradas: inspecione, corrija, remova ou
+desative pelo `/memoria`. Quando o recurso está habilitado, a aprendizagem começa ligada por
+padrão, sem um comando inicial de adesão. Elas são separadas da memória manual e seguem os
+escopos e prazos da política de privacidade. Desligar a aprendizagem impede novas gravações, não remove memórias
+existentes do contexto; use apagar/limpar para retirá-las. Recibos sem conteúdo impedem replay,
+com poda diária após 30 dias e exclusão com o perfil; limites de idade/início do processo impedem
+reabertura após remover recibos. Visão pode enviar imagens anexadas ao provedor selecionado,
+sem usá-las para aprender fatos pessoais.
 
 **O modelo erra.** Trate as respostas como o palpite de alguém que leu bastante sobre o jogo, não
 como fonte oficial. Dado de jogo muda a cada patch, e o que o bot diz pode estar velho, incompleto
@@ -131,8 +154,11 @@ privacidade.
 
 ## 9. Encerramento
 
-Você sai quando quiser: pare de usar, tire o bot do servidor, rode `/apagar-meus-dados`. Não precisa
-avisar ninguém.
+Você pode parar de usar, encerrar uma sessão com `/encerrar-conversa`, desligar a aprendizagem
+pelo `/memoria` e pedir a exclusão com `/apagar-meus-dados`, confirmando no formulário. A exclusão
+tem as exceções descritas na política. Não mencionar o bot não impede que suas mensagens apareçam
+em recortes de contexto pedidos por terceiros. A administração pode desligar a IA, bloquear canais
+ou remover o bot do servidor. Para outros pedidos sobre seus dados, use o Contato.
 
 Eu posso encerrar o bot, um comando ou o seu acesso a qualquer momento. Se for o bot inteiro
 saindo do ar, aviso no servidor de suporte com a antecedência que der.
@@ -160,7 +186,7 @@ caso em que vale o foro do seu domicílio, como manda o CDC.
 
 # Terms of Service — CyreneBot
 
-**Last updated: September 19, 2026.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 6, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail, maintained by `HEITOR OLIVEIRA RAMOS`
@@ -168,7 +194,9 @@ as a personal, free project. This page is the agreement between you and the deve
 it: what you may do, what is guaranteed (little), and what happens when something goes wrong.
 
 Using the bot — running a command, mentioning it, or keeping it in your server — means accepting
-what is written here. If you disagree, simply do not use it.
+what is written here. If you disagree, do not use it. This does not mean messages from non-users
+are never processed: context excerpts may include third-party speech, as described in the policy.
+Another person's request does not constitute your individual consent.
 
 What the bot stores about you is in the [Privacy Policy](README.md), which is part of these terms.
 
@@ -223,7 +251,8 @@ author and none of it is claimed by the developer.
 By **publishing** a guide or tier list, you grant permission to store, format and display that
 content inside the bot, to anyone who runs the commands — non-exclusive, unpaid, for as long as the
 content remains published. That is the minimum the feature needs. Your content is not used for
-anything else and no model is trained on it.
+purposes beyond this permission. Publishing does not authorize model training; see the privacy
+policy for AI processing and third-party conditions.
 
 You warrant that what you upload is yours, or that you have the right to use it. Someone else's art
 without permission, no.
@@ -240,6 +269,25 @@ stay up for the community. Want the guide taken down, not just unlinked? Ask thr
 Processing may be local or use external providers, depending on the configuration described in
 [Privacy Policy, section 4](README.md#4-who-it-is-shared-with). Do not send secrets or sensitive
 data. This does not change the fact that the bot is free for you.
+
+Providers may vary during testing and operation; the operator frequently evaluates the bot with
+ChatGPT/Luna. These tests neither establish nor authorize the provider's use of messages to train
+or improve models. The privacy policy describes official rules that differ by service. The operator
+confirmed a personal Plus account and disabling **Improve the model for everyone** on October 6,
+2026, at 19:09 UTC, for new conversations/tasks, subject to the policy's qualifications. The terms
+applicable to the bot's access and additional controls still require review before publication. This disclosure
+does not grant permission to use Discord content or declare compliance with Discord or provider policies.
+
+The optional Sign in with ChatGPT provider uses the operator's subscription allowance and may
+become unavailable due to limits or revocation; Discord users are not charged and the bot does
+not automatically switch to paid API billing. Learned memories can also be wrong: inspect,
+correct, remove or disable them through `/memoria`. When the feature is enabled, learning defaults
+to on without an initial opt-in command. They are separate from manual memory and
+follow the privacy policy's scope and retention rules. Disabling learning prevents new writes but
+keeps existing memories in context; delete or clear them to remove them. Content-free receipts
+prevent replay, are pruned daily after 30 days and deleted with your profile; event-age and process-start
+limits prevent replay after receipts are removed. Vision may send attachments to the selected
+provider but does not use them to learn personal facts.
 
 **The model gets things wrong.** Treat its answers as the guess of someone who has read a lot about
 the game, not as an official source. Game data changes every patch, and what the bot says may be
@@ -293,8 +341,11 @@ described in the privacy policy.
 
 ## 9. Ending it
 
-You can leave whenever you want: stop using it, remove the bot from your server, run
-`/apagar-meus-dados`. No need to tell anyone.
+You may stop using the bot, end a session with `/encerrar-conversa`, disable learning through
+`/memoria` and request deletion with `/apagar-meus-dados`, confirming in its form. Deletion has the
+exceptions described in the policy. Not mentioning the bot does not prevent your messages from
+appearing in context excerpts requested by others. Administrators may disable AI, block channels
+or remove the bot from the server. Use Contact for other requests concerning your data.
 
 The bot, a command, or your access may be discontinued at any time. If the whole bot is going
 offline, it will be announced in the support server as far in advance as possible.
