@@ -1,6 +1,6 @@
 # Política de Privacidade — CyreneBot
 
-**Proposta de atualização: 6 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 8 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado, como pedir a exclusão
@@ -16,17 +16,19 @@ As regras de uso do bot estão nos [Termos de Serviço](TERMOS.md).
 | O quê | Quando entra | Pra quê |
 |---|---|---|
 | Seu ID de usuário do Discord e seu nome de exibição atual | Na primeira vez que você fala comigo ou usa um comando | É o que liga uma coisa à outra: sua nota, sua memória, seu UID. O nome existe pra eu te chamar pelo nome |
-| O texto que você escreve no `/memoria` | Só quando você abre o `/memoria` e escreve | Lembrar de você entre uma conversa e outra. É livre: você decide o que vai ali |
+| O texto que você escreve no `/memoria`, seu ID e o escopo de servidor ou DM | Só quando você abre o `/memoria` e escreve | Lembrar de você naquele escopo, sem levar a memória de outro servidor ou DM. É livre: você decide o que vai ali |
 | Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank` |
 | Conteúdo das mensagens que você endereça a mim | Menção, resposta a uma mensagem minha, ou uma sessão aberta com `/iniciar-conversa` | Entender a pergunta e responder. Sessões do `/iniciar-conversa` guardam o par pergunta/resposta pra conversa ter fio |
-| Perguntas e respostas sobre o jogo | Quando você me pergunta algo sobre HSR | Cache: a mesma pergunta não precisa ser processada duas vezes |
+| Evidências factuais e fontes sobre o jogo | Quando uma consulta elegível sobre HSR encontra informação reutilizável | Cache de evidências, sem compartilhar a resposta personalizada. Entradas antigas de respostas deixam de ser usadas e seguem a poda da seção 3 |
 | Nota das suas builds, apelido no jogo, nível e eidolon | Quando você roda o `/build` | Montar o card e o ranking do `/rank` |
 | Guias (`/guia`) e tier lists (`/tierlist`) que você escreve, com as imagens que você mesma envia | Enquanto você usa esses comandos | São o conteúdo que você está criando; ficam ligados a você pra você poder editar e continuar de onde parou |
 | Votos em respostas (👍/👎), IDs da pergunta e resposta, canal, servidor, votante, rota e data | Quando uma resposta é registrada e alguém vota | Avaliar a qualidade das respostas, sem copiar o texto para esses registros |
 | Advertências de moderação (`/avisar`) | Quando um moderador do servidor te adverte | Histórico de moderação daquele servidor. Guarda também quem aplicou a advertência |
+| Identidade Discord, servidores, permissões, sessão e tokens OAuth do dashboard | Quando você entra no painel com Discord | Confirmar quais servidores você pode administrar; tokens ficam somente na memória do backend |
+| Preferências da Cyrene por servidor e auditoria de alterações | Quando um administrador configura o bot pelo Discord ou painel | Aplicar a configuração e registrar autor, servidor, ação, data e resultado, sem copiar regras, mensagens ou segredos para a auditoria |
+| Política de IA, consumo agregado e recibos técnicos de atendimento | Quando a IA é solicitada ou o operador altera a política | Aplicar franquias, evitar cobrança duplicada e reconciliar entregas, sem gravar conteúdo de conversa nesses registros |
 
-Dados do jogo (personagens, relíquias, banners, materiais) não são seus dados pessoais e não estão
-nesta lista.
+O catálogo público do jogo (personagens, relíquias, banners, materiais) não é um perfil de usuário.
 
 ### Leitura de contexto do Discord
 
@@ -54,6 +56,49 @@ Não mencionar o bot não impede essas leituras de contexto. Durante uma sessão
 `/iniciar-conversa`, suas mensagens naquele canal são processadas mesmo sem menção; os pares de
 pergunta e resposta ficam guardados. Use `/encerrar-conversa` para encerrar a sessão.
 
+### Painel administrativo e franquia de IA
+
+O dashboard previsto em `cyrene.expressopompom.com` usa login oficial do Discord com os escopos
+`identify` e `guilds`. Recebe ID, nome e avatar da conta e informações mínimas dos servidores e
+permissões necessárias à autorização; não pede e-mail. Tokens de acesso e refresh ficam somente
+na memória do backend, sem envio ao navegador, gravação no banco ou inclusão em backups. O
+navegador recebe um cookie de sessão exclusivo do subdomínio, protegido por HTTPS e inacessível
+ao JavaScript. O site principal não consulta nem compartilha essa sessão.
+
+A sessão vence após 30 minutos sem atividade ou, no máximo, oito horas depois do login; reiniciar
+o backend também encerra as sessões. Sair do painel invalida a sessão no servidor. Isso não revoga
+automaticamente a autorização do aplicativo na sua conta Discord. Permissões locais são
+revalidadas em cada alteração; leituras podem reutilizar uma verificação por até 30 segundos.
+
+Somente o proprietário ou quem tem a permissão real Administrador no Discord pode acessar a
+configuração da própria guild, com a Cyrene presente. A permissão Gerenciar Servidor isolada não
+basta. Administradores veem preferências, canais, consumo agregado e auditoria local, nunca
+memórias privadas ou histórico de conversas pelo painel. O papel global, concedido apenas à
+conta configurada pelo responsável, controla disponibilidade e franquias de IA e vê somente
+identidade mínima do servidor, consumo agregado e auditoria dessas políticas. Ele não abre
+configurações locais de terceiros. Participar do Expresso Pom-Pom não concede esse papel.
+
+Cada servidor recebe, por padrão, 200 mensagens de IA por mês, compartilhadas por todos os seus
+usuários, canais e recursos. O Expresso Pom-Pom (`936506371879354388`) é ilimitado. Exceções dos
+demais servidores dependem do operador global. Os [Termos](TERMOS.md) explicam a unidade de
+consumo, reservas, renovação em São Paulo e limites contra abuso.
+
+Recibos de franquia guardam IDs de evento, servidor, canal e eventual mensagem entregue, período,
+tentativa, estado, datas e um hash técnico do primeiro conteúdo enviado para reconhecer entregas.
+Não guardam o texto, prompts, respostas, cookies, tokens nem o ID do autor da solicitação. IDs e
+hashes continuam sendo metadados técnicos; não são apresentados como dados necessariamente
+anônimos. A reconciliação pode consultar uma janela limitada de mensagens do próprio bot no
+Discord, sem copiar seu conteúdo para o recibo. A auditoria de configuração/política registra o
+ID de quem fez a alteração, sem copiar o conteúdo privado alterado.
+
+### Memória manual por escopo
+
+A memória manual passa a ser ligada a você e ao servidor em que foi escrita; DMs têm escopo
+separado. O `/memoria` edita apenas o escopo atual. Memórias manuais antigas, sem origem de
+servidor identificável, ficam preservadas no perfil, mas isoladas da recuperação: não são
+atribuídas automaticamente a nenhuma guild nem à DM. Você pode escrever uma nova memória no
+escopo desejado; a exclusão do perfil remove também o texto antigo.
+
 ### Memórias aprendidas (recurso opcional)
 
 Quando o responsável habilita a conversa com **Sign in with ChatGPT**, o bot pode aprender
@@ -63,7 +108,7 @@ Quando o recurso está habilitado, a aprendizagem começa ligada por padrão; n�
 cada. São registros separados da memória manual: conteúdo, chave do fato, seu ID Discord, escopo,
 IDs da mensagem/canal de origem e datas. Não substituem o texto que você escreveu no `/memoria`.
 Memórias de servidor só são usadas para você naquele servidor; DMs ficam separadas. A memória
-manual continua global, conforme sua escolha explícita. Não envie segredos; filtros não são
+manual também segue o escopo descrito acima. Não envie segredos; filtros não são
 uma garantia de detecção de toda informação sensível.
 
 Use `/memoria acao:ver`, `corrigir` (com `chave` e `texto`), `apagar` (com `chave`), `limpar`,
@@ -121,6 +166,16 @@ de conta e UID substituídos. Esses diagnósticos não incluem os identificadore
   devem ser encaminhados pelo Contato.
 - **Guias e tier lists publicadas:** o conteúdo fica no ar pra comunidade, mas perde o vínculo com
   você quando você apaga seus dados. Rascunhos não publicados somem junto com o resto.
+- **Sessões e tokens do dashboard:** somente em memória; 30 minutos de inatividade, máximo de
+  oito horas após o login, logout ou reinício do backend encerram a sessão.
+- **Auditoria:** o código prevê retenção de 90 dias para alterações locais e 365 dias para políticas
+  globais de IA. Esses registros incluem o ID do administrador que fez a alteração.
+- **Franquia de IA:** recibos técnicos já confirmados ou liberados são podados após 90 dias;
+  reservas cuja entrega ficou incerta permanecem até reconciliação. Agregados mensais encerrados
+  podem ser podados após 13 meses quando não restarem reservas nem recibos dependentes. A política
+  global persiste, inclusive se o bot for removido e adicionado novamente. A poda depende da
+  execução do backend e pode atrasar por falha ou indisponibilidade. Não se reconstrói consumo
+  anterior à implantação desta contabilização.
 
 ## 4. Com quem isso é compartilhado
 
@@ -221,7 +276,9 @@ memória manual e aprendida, preferências e recibos de aprendizagem, sessões e
 notas e histórico de builds, seus votos e rascunhos. Guias e tier lists publicadas são anonimizadas;
 advertências de moderação permanecem. Caches e IDs de respostas sem vínculo direto com o perfil
 não são apagados por esse comando; o conteúdo dos caches segue a poda da seção 3. O comando não
-apaga mensagens do Discord nem cópias mantidas por terceiros ou backups já existentes.
+apaga mensagens do Discord nem cópias mantidas por terceiros ou backups já existentes. Também
+não zera o consumo do servidor, nem remove seus recibos técnicos ou a auditoria de ações
+administrativas; esses registros seguem os prazos da seção 3. Para pedidos sobre eles, use o Contato.
 
 Pra qualquer outro pedido — inclusive uma cópia dos seus dados — use o [Contato](#contato). Respondo
 em até 7 dias.
@@ -248,12 +305,18 @@ demais detalhes:
 > ficam é cifrado em repouso.** Cópias de segurança são feitas diariamente e rodadas fora depois de
 > 14 dias.
 
-O `bot.sh` exclui seis tabelas de conteúdo dos dumps que produz: sessões, trocas, cache, respostas
-paginadas, memórias aprendidas e recibos. Isso não comprova execução, existência de outras cópias,
+O `bot.sh` exclui dos dumps o conteúdo de sessões, trocas, cache, respostas paginadas, memórias
+aprendidas, recibos de aprendizagem e memórias manuais por escopo. A memória manual antiga
+preservada no perfil continua sujeita ao backup do perfil. Políticas, contadores, recibos de
+franquia e auditorias permanecem nos dumps para preservar limites e rastreabilidade; sessões e
+tokens OAuth não são persistidos. Isso não comprova execução, existência de outras cópias,
 cifragem nem rotação. Os provedores de IA ativos e suas condições também precisam ser confirmados.
 
 Nenhum sistema é perfeito, e eu não posso prometer segurança absoluta. As funções de contexto
 podem processar dados de pessoas que não chamaram o bot, conforme a seção 1.
+Os limites do papel global são impostos pela aplicação; quem controla a infraestrutura ou
+credenciais administrativas do banco continua tecnicamente capaz de acessar dados e alterar o
+sistema. O painel não oferece atalhos para esse acesso.
 
 ## 7. Menores de idade
 
@@ -276,7 +339,7 @@ verdade o que é guardado, por quanto tempo ou com quais provedores é compartil
 
 # Privacy Policy — CyreneBot
 
-**Proposed update: October 6, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 8, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
@@ -290,16 +353,19 @@ The rules for using the bot are in the [Terms of Service](TERMOS.md).
 | What | When it is collected | What for |
 |---|---|---|
 | Your Discord user ID and current display name | The first time you talk to the bot or use a command | It is what ties everything together: your score, your memory, your UID. The name is so the bot can address you by name |
-| The text you write in `/memoria` | Only when you open `/memoria` and write something | Remembering you between conversations. It is free-form: you decide what goes there |
+| The text you write in `/memoria`, your ID and its server or DM scope | Only when you open `/memoria` and write something | Remembering you in that scope without bringing memory from another server or DM. It is free-form: you decide what goes there |
 | Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank` |
 | The content of messages you address to the bot | An @mention, a reply to one of the bot's messages, or a session you opened with `/iniciar-conversa` | Understanding and answering the question. `/iniciar-conversa` sessions store the question/answer pair so the conversation keeps its thread |
-| Game questions and their answers | When you ask the bot about HSR | A cache, so the same question is not processed twice |
+| Factual game evidence and sources | When an eligible HSR query finds reusable information | An evidence cache, without sharing the personalized answer. Old answer entries are no longer used and follow section 3 pruning |
 | Your build scores, in-game nickname, level and eidolon | When you run `/build` | Drawing the card and the `/rank` leaderboard |
 | Guides (`/guia`) and tier lists (`/tierlist`) you write, including art you upload yourself | While you use those commands | It is the content you are creating; it stays linked to you so you can edit it and resume it |
 | Answer votes (👍/👎), question and answer IDs, channel, server, voter, route and timestamp | When an answer is registered and someone votes | Assess answer quality, without copying message text into these records |
 | Moderation warnings (`/avisar`) | When a server moderator warns you | That server's moderation history. It also records which moderator issued it |
+| Discord identity, servers, permissions, dashboard session and OAuth tokens | When you sign in to the dashboard with Discord | Confirm which servers you may administer; tokens stay only in backend memory |
+| Per-server Cyrene preferences and change audits | When an administrator configures the bot through Discord or the dashboard | Apply configuration and record actor, server, action, time and outcome, without copying rules, messages or secrets into the audit |
+| AI policy, aggregate usage and technical request receipts | When AI is requested or the operator changes a policy | Enforce allowances, prevent duplicate accounting and reconcile deliveries, without storing conversation content in these records |
 
-Game data (characters, relics, banners, materials) is not personal data and is not in this list.
+The public game catalog (characters, relics, banners, materials) is not a user profile.
 
 ### Reading Discord context
 
@@ -326,6 +392,49 @@ the bot does not prevent these context reads. During a session opened with `/ini
 your messages in that channel are processed even without mentions; question/answer pairs are stored.
 Use `/encerrar-conversa` to end the session.
 
+### Administrative dashboard and AI allowance
+
+The dashboard planned at `cyrene.expressopompom.com` uses official Discord login with the
+`identify` and `guilds` scopes. It receives account ID, name and avatar, plus minimal server and
+permission information needed for authorization; it does not request email. Access and refresh
+tokens stay only in backend memory, without being sent to the browser, stored in the database or
+included in backups. The browser receives an HTTPS-protected session cookie exclusive to the
+subdomain and inaccessible to JavaScript. The main site does not query or share that session.
+
+Sessions expire after 30 minutes of inactivity or at most eight hours after login; restarting the
+backend also ends sessions. Signing out invalidates the server-side session. This does not
+automatically revoke the application's authorization in your Discord account. Local permissions
+are rechecked for every change; reads may reuse a verification for up to 30 seconds.
+
+Only the owner or someone with the actual Discord Administrator permission may access their
+guild's configuration, while Cyrene is present. Manage Server alone is insufficient.
+Administrators see preferences, channels, aggregate usage and local audits, never private memories
+or conversation histories through the dashboard. The global role, granted only to the account
+configured by the operator, controls AI availability and allowances and sees only minimal server
+identity, aggregate usage and policy audits. It does not open other servers' local configurations.
+Membership in Expresso Pom-Pom does not grant that role.
+
+Each server receives 200 AI messages per month by default, shared by all its users, channels and
+features. Expresso Pom-Pom (`936506371879354388`) is unlimited. Exceptions for other servers require
+the global operator. The [Terms](TERMOS.md) explain the accounting unit, reservations, renewal in
+São Paulo and anti-abuse limits.
+
+Allowance receipts retain event, server, channel and any delivered message IDs, period, attempt,
+state, timestamps and a technical hash of the first sent content to recognize deliveries. They
+do not retain message text, prompts, answers, cookies, tokens or the request author's ID. IDs and
+hashes are still technical metadata, not necessarily anonymous data. Reconciliation may inspect
+a limited window of the bot's own Discord messages, without copying their content into the
+receipt. Configuration/policy audits record the changing administrator's ID without copying
+the private content changed.
+
+### Manual memory by scope
+
+Manual memory becomes linked to you and the server where it was written; DMs have a separate
+scope. `/memoria` edits only the current scope. Old manual memories without an identifiable
+server origin are preserved in the profile but isolated from retrieval: they are not automatically
+assigned to any guild or DM. You may write new memory in the desired scope; deleting the profile
+also removes the old text.
+
 ### Learned memories (optional feature)
 
 When the operator enables conversations through **Sign in with ChatGPT**, the bot may learn useful
@@ -334,7 +443,7 @@ records: content, fact key, Discord owner ID, scope, source message/channel IDs 
 When the feature is enabled, learning defaults to on; no initial `/memoria acao:ligar` is required.
 There are up to 20 retrievable entries per scope, with up to 400 characters each.
 They never overwrite your manually authored `/memoria` text. Server memories are used only for
-you in that server; DM memories stay separate. Manual memory remains global by your explicit choice.
+you in that server; DM memories stay separate. Manual memory also follows the scope described above.
 Do not send secrets; filters cannot guarantee detection of every sensitive detail.
 
 Use `/memoria acao:ver`, `corrigir` (with `chave` and `texto`), `apagar` (with `chave`), `limpar`,
@@ -391,6 +500,15 @@ do not include known owner identifiers or game UIDs.
   these records.
 - **Published guides and tier lists:** the content stays up for the community, but loses its link to
   you when you erase your data. Unpublished drafts are deleted along with everything else.
+- **Dashboard sessions and tokens:** only in memory; 30 minutes of inactivity, at most eight hours
+  after login, logout or backend restart end the session.
+- **Audits:** the code provides 90-day retention for local changes and 365 days for global AI
+  policies. These records include the changing administrator's ID.
+- **AI allowance:** confirmed or released technical receipts are pruned after 90 days; reservations
+  with uncertain delivery remain until reconciliation. Closed monthly aggregates may be pruned
+  after 13 months when no reservations or dependent receipts remain. Global policy persists even
+  if the bot is removed and added again. Pruning depends on backend execution and may be delayed
+  by failure or downtime. Usage before this accounting is deployed is not reconstructed.
 
 ## 4. Who it is shared with
 
@@ -492,7 +610,9 @@ and learned memory, learning preferences and receipts, linked sessions and excha
 and history, your votes and drafts. Published guides and tier lists are anonymized; moderation
 warnings remain. Caches and answer IDs without a direct profile link are not deleted by this command;
 cache content follows section 3 pruning. The command does not delete Discord messages, third-party
-copies or existing backups.
+copies or existing backups. It also does not reset server usage or remove its technical receipts
+or administrative action audits; those follow section 3 retention. Use Contact for requests about
+these records.
 
 For any other request — including a copy of your data — use [Contact](#contact-1). Answered within
 7 days.
@@ -518,12 +638,18 @@ below for review; the confirmation above does not establish its other details:
 > database and its backups is encrypted at rest.** Backups run daily and are rotated out after 14
 > days.
 
-`bot.sh` excludes six content tables from the dumps it produces: sessions, exchanges, cache, paged
-answers, learned memories and receipts. This does not establish execution, other copies, encryption
-or rotation. Active AI providers and their applicable conditions also require confirmation.
+`bot.sh` excludes the content of sessions, exchanges, cache, paged answers, learned memories,
+learning receipts and scoped manual memories from dumps. Old manual memory preserved in the
+profile remains subject to profile backups. Policies, counters, allowance receipts and audits
+remain in dumps to preserve limits and traceability; OAuth sessions and tokens are not persisted.
+This does not establish execution, other copies, encryption or rotation. Active AI providers and
+their applicable conditions also require confirmation.
 
 No system is perfect and absolute security cannot be promised. Context features may process data
 about people who did not invoke the bot, as described in section 1.
+Global-role limits are imposed by the application; whoever controls the infrastructure or
+administrative database credentials remains technically able to access data and change the
+system. The dashboard provides no shortcut for that access.
 
 ## 7. Children
 

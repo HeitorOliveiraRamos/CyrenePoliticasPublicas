@@ -1,6 +1,6 @@
 # Termos de Serviço — CyreneBot
 
-**Proposta de atualização: 6 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 8 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail, mantido por `HEITOR OLIVEIRA RAMOS`
 como projeto pessoal e gratuito. Esta página é o combinado entre você e eu sobre o uso dele: o que
@@ -23,6 +23,9 @@ termos.
 - **Pra adicionar o bot num servidor** você precisa da permissão "Gerenciar Servidor" naquele
   servidor. Quem adiciona responde pelo uso do bot ali: a configuração, quem é moderador, e o que a
   moderação faz com os comandos.
+- **Para administrar pelo dashboard**, é preciso ser proprietário ou ter a permissão real
+  Administrador do Discord, com o bot presente. Gerenciar Servidor isoladamente não concede
+  acesso ao painel. A autorização é verificada novamente para cada alteração.
 
 ## 2. Quanto custa — e o que isso implica
 
@@ -33,6 +36,33 @@ Como é de graça e mantido por uma pessoa só, **não existe garantia de dispon
 cair, ficar lento, sumir por uns dias, e comando pode mudar, encolher ou desaparecer sem aviso. Sem
 SLA, sem plantão, sem suporte 24 horas. O que existe é o servidor de suporte no [Contato](#contato),
 onde eu respondo quando dá.
+
+### Franquia de IA por servidor
+
+Cada servidor tem, por padrão, **200 mensagens de IA por mês**, compartilhadas por todos os
+usuários, canais e recursos. O Expresso Pom-Pom (`936506371879354388`) tem franquia mensal
+ilimitada. Só o operador global autorizado pode estabelecer exceções para os demais servidores;
+administradores locais não podem aumentar sua própria franquia. Pertencer ao Expresso Pom-Pom
+não concede privilégios globais nem transfere sua franquia a outra guild ou à DM.
+
+Uma unidade corresponde a um atendimento lógico que entrega conteúdo de IA, inclusive de cache
+ou uma entrega parcial. Dividir a resposta em mensagens, usar ferramentas ou fazer várias
+chamadas internas não multiplica a unidade; a repetição técnica do mesmo evento também não.
+Comandos inteiramente determinísticos, recusas, erros administrativos e falhas sem entrega de
+conteúdo de IA não geram consumo confirmado. Cancelar depois de receber conteúdo não devolve a
+unidade. Uma nova solicitação legítima é outro atendimento.
+
+A franquia renova às 00h do primeiro dia do mês no fuso `America/Sao_Paulo`, sem acúmulo de saldo.
+O uso anterior à implantação desta contabilização não é inventado. Remover e reinstalar o bot
+não zera o consumo. Solicitações em andamento reservam saldo; se a entrega ficar incerta após
+uma falha, a reserva pode permanecer ocupada até reconciliação. O painel distingue reservas de
+consumo confirmado e saldo livre. Não oferece estorno ou zeragem de consumo.
+
+Bloqueio ou redução de franquia vale para novas solicitações; atendimentos já aceitos podem
+concluir dentro do prazo de processamento. A redução não apaga consumo nem produz saldo
+negativo. Mesmo ilimitada, a guild continua sujeita a concorrência, cooldowns e proteções contra
+abuso. DMs dependem da disponibilidade configurada pelo responsável, com controles próprios,
+sem assumir os benefícios de um servidor. Recursos sem IA continuam independentes da franquia.
 
 ## 3. Como usar, e como não usar
 
@@ -125,6 +155,12 @@ de comunidade. Se o registro em si for ilegal ou abusivo, aí sim fale comigo pe
 Quem administra o servidor é responsável por avisar sua comunidade de que o bot está ali e de que
 esta página e a política de privacidade valem.
 
+O dashboard permite ao administrador local configurar somente a Cyrene em sua própria guild e
+consultar consumo agregado. Não permite visualizar memórias privadas de usuários. O papel global
+se limita às concessões e franquias de IA, identidade mínima dos servidores, consumo agregado e
+auditoria dessas políticas; ele não concede acesso às preferências locais de terceiros. Acesso
+local do operador, quando existir, decorre das mesmas permissões Discord de qualquer administrador.
+
 ## 7. Nada disso é oficial
 
 CyreneBot **não tem vínculo** com HoYoverse, miHoYo ou COGNOSPHERE, nem com Discord, Enka.Network ou
@@ -186,7 +222,7 @@ caso em que vale o foro do seu domicílio, como manda o CDC.
 
 # Terms of Service — CyreneBot
 
-**Proposed update: October 6, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 8, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail, maintained by `HEITOR OLIVEIRA RAMOS`
@@ -207,6 +243,9 @@ What the bot stores about you is in the [Privacy Policy](README.md), which is pa
 - **To add the bot to a server** you need the "Manage Server" permission in it. Whoever adds it is
   responsible for how it is used there: the configuration, who the moderators are, and what
   moderation does with the commands.
+- **To administer through the dashboard**, you must be the owner or hold the actual Discord
+  Administrator permission, with the bot present. Manage Server alone does not grant dashboard
+  access. Authorization is checked again for every change.
 
 ## 2. What it costs — and what follows from that
 
@@ -217,6 +256,34 @@ Because it is free and maintained by one person, **there is no availability guar
 go down, be slow, disappear for a few days, and commands may change, shrink or vanish without
 notice. No SLA, no on-call, no 24/7 support. What does exist is the support server under
 [Contact](#contact-1), where questions are answered when possible.
+
+### Per-server AI allowance
+
+Each server has **200 AI messages per month** by default, shared by all users, channels and
+features. Expresso Pom-Pom (`936506371879354388`) has an unlimited monthly allowance. Only the
+authorized global operator may establish exceptions for other servers; local administrators
+cannot increase their own allowance. Membership in Expresso Pom-Pom grants no global privilege
+and does not transfer its allowance to another guild or DMs.
+
+One unit is a logical request that delivers AI content, including cached content or a partial
+delivery. Splitting an answer into messages, using tools or making several internal calls does
+not multiply that unit; technical repetition of the same event does not either. Entirely
+deterministic commands, rejections, administrative errors and failures without AI content
+delivery do not create confirmed usage. Cancellation after receiving content does not refund
+the unit. A legitimate new request is a new unit.
+
+The allowance renews at 00:00 on the first day of each month in `America/Sao_Paulo`, without
+carryover. Usage before this accounting is deployed is not fabricated. Removing and reinstalling
+the bot does not reset usage. In-flight requests reserve capacity; if delivery becomes uncertain
+after a failure, the reservation may remain occupied until reconciliation. The dashboard
+distinguishes reservations from confirmed usage and available capacity. It offers no refund or
+usage-reset control.
+
+A block or allowance reduction applies to new requests; accepted requests may finish within
+their processing deadline. Reducing a limit neither erases usage nor creates negative capacity.
+Even an unlimited guild remains subject to concurrency, cooldowns and anti-abuse protections.
+DMs depend on availability configured by the operator, with separate controls and no assumed
+server benefits. Features without AI remain independent of the allowance.
 
 ## 3. How to use it, and how not to
 
@@ -311,6 +378,12 @@ not arbitrated here. If the record itself is illegal or abusive, then do get in 
 
 Server administrators are responsible for telling their community that the bot is there and that
 this page and the privacy policy apply.
+
+The dashboard lets local administrators configure Cyrene only in their own guild and inspect
+aggregate usage. It does not expose users' private memories. The global role is restricted to
+AI availability and allowances, minimal server identity, aggregate usage and policy audits; it
+does not grant access to other servers' local preferences. Any local access held by the operator
+comes from the same Discord permissions required of other administrators.
 
 ## 7. None of this is official
 
