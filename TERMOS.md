@@ -1,6 +1,6 @@
 # Termos de Serviço — CyreneBot
 
-**Proposta de atualização: 8 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 8 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail, mantido por `HEITOR OLIVEIRA RAMOS`
 como projeto pessoal e gratuito. Esta página é o combinado entre você e eu sobre o uso dele: o que
@@ -222,7 +222,7 @@ caso em que vale o foro do seu domicílio, como manda o CDC.
 
 # Terms of Service — CyreneBot
 
-**Proposed update: October 8, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 8, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail, maintained by `HEITOR OLIVEIRA RAMOS`

@@ -1,6 +1,6 @@
 # Política de Privacidade — CyreneBot
 
-**Proposta de atualização: 8 de outubro de 2026 — ainda não publicada nem em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 8 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado, como pedir a exclusão
@@ -58,7 +58,7 @@ pergunta e resposta ficam guardados. Use `/encerrar-conversa` para encerrar a se
 
 ### Painel administrativo e franquia de IA
 
-O dashboard previsto em `cyrene.expressopompom.com` usa login oficial do Discord com os escopos
+O dashboard em `cyrene.expressopompom.com` usa login oficial do Discord com os escopos
 `identify` e `guilds`. Recebe ID, nome e avatar da conta e informações mínimas dos servidores e
 permissões necessárias à autorização; não pede e-mail. Tokens de acesso e refresh ficam somente
 na memória do backend, sem envio ao navegador, gravação no banco ou inclusão em backups. O
@@ -339,7 +339,7 @@ verdade o que é guardado, por quanto tempo ou com quais provedores é compartil
 
 # Privacy Policy — CyreneBot
 
-**Proposed update: October 8, 2026 — not yet published or effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 8, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
@@ -394,7 +394,7 @@ Use `/encerrar-conversa` to end the session.
 
 ### Administrative dashboard and AI allowance
 
-The dashboard planned at `cyrene.expressopompom.com` uses official Discord login with the
+The dashboard at `cyrene.expressopompom.com` uses official Discord login with the
 `identify` and `guilds` scopes. It receives account ID, name and avatar, plus minimal server and
 permission information needed for authorization; it does not request email. Access and refresh
 tokens stay only in backend memory, without being sent to the browser, stored in the database or
