@@ -1,6 +1,6 @@
 # Termos de Serviço — CyreneBot
 
-**Proposta de atualização: 8 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 12 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail, mantido por `HEITOR OLIVEIRA RAMOS`
 como projeto pessoal e gratuito. Esta página é o combinado entre você e eu sobre o uso dele: o que
@@ -26,6 +26,9 @@ termos.
 - **Para administrar pelo dashboard**, é preciso ser proprietário ou ter a permissão real
   Administrador do Discord, com o bot presente. Gerenciar Servidor isoladamente não concede
   acesso ao painel. A autorização é verificada novamente para cada alteração.
+- **A estimativa de jades** é compartilhada por todos os servidores. Editam no painel os
+  administradores do Expresso Pom-Pom e quem tiver lá o cargo escolhido por eles; quem edita
+  responde pelos números que publica. A Cyrene não garante a exatidão das linhas estimadas.
 
 ## 2. Quanto custa — e o que isso implica
 
@@ -222,7 +225,7 @@ caso em que vale o foro do seu domicílio, como manda o CDC.
 
 # Terms of Service — CyreneBot
 
-**Proposed update: October 8, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 12, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail, maintained by `HEITOR OLIVEIRA RAMOS`
@@ -246,6 +249,9 @@ What the bot stores about you is in the [Privacy Policy](README.md), which is pa
 - **To administer through the dashboard**, you must be the owner or hold the actual Discord
   Administrator permission, with the bot present. Manage Server alone does not grant dashboard
   access. Authorization is checked again for every change.
+- **The Stellar Jade estimate** is shared by every server. It is edited in the dashboard by
+  Expresso Pom-Pom administrators and by members holding the role they choose; editors are
+  responsible for the numbers they publish. Cyrene does not guarantee the accuracy of estimated lines.
 
 ## 2. What it costs — and what follows from that
 

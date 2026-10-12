@@ -1,6 +1,6 @@
 # Política de Privacidade — CyreneBot
 
-**Proposta de atualização: 8 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 12 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado, como pedir a exclusão
@@ -77,6 +77,14 @@ memórias privadas ou histórico de conversas pelo painel. O papel global, conce
 conta configurada pelo responsável, controla disponibilidade e franquias de IA e vê somente
 identidade mínima do servidor, consumo agregado e auditoria dessas políticas. Ele não abre
 configurações locais de terceiros. Participar do Expresso Pom-Pom não concede esse papel.
+
+A **estimativa de jades** do `/infos jades` é uma só para todos os servidores e pode ser editada
+no painel pelo papel global, por administradores do Expresso Pom-Pom e por quem tem lá o cargo
+escolhido por esses administradores. Para saber se você tem esse cargo, o backend consulta seus
+cargos no Expresso Pom-Pom pela API oficial do Discord, com o token do bot; a lista fica só na
+sessão, por até 30 segundos, e não é gravada. Fica gravado o ID do cargo escolhido. Salvar a
+estimativa registra autor, ação, data e resultado na auditoria do Expresso Pom-Pom. A agenda do
+jogo usada na conta é dado público do jogo e não contém dado de pessoas.
 
 Cada servidor recebe, por padrão, 200 mensagens de IA por mês, compartilhadas por todos os seus
 usuários, canais e recursos. O Expresso Pom-Pom (`936506371879354388`) é ilimitado. Exceções dos
@@ -339,7 +347,7 @@ verdade o que é guardado, por quanto tempo ou com quais provedores é compartil
 
 # Privacy Policy — CyreneBot
 
-**Proposed update: October 8, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 12, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
@@ -413,6 +421,14 @@ or conversation histories through the dashboard. The global role, granted only t
 configured by the operator, controls AI availability and allowances and sees only minimal server
 identity, aggregate usage and policy audits. It does not open other servers' local configurations.
 Membership in Expresso Pom-Pom does not grant that role.
+
+The **Stellar Jade estimate** behind `/infos jades` is shared by every server and can be edited in
+the dashboard by the global role, by Expresso Pom-Pom administrators, and by members holding the
+role those administrators choose. To check that role, the backend reads your roles in Expresso
+Pom-Pom through the official Discord API with the bot token; the list is kept only in the session,
+for up to 30 seconds, and is not stored. The chosen role ID is stored. Saving the estimate records
+author, action, date and result in Expresso Pom-Pom's audit log. The game calendar used for the
+estimate is public game data and contains no personal data.
 
 Each server receives 200 AI messages per month by default, shared by all its users, channels and
 features. Expresso Pom-Pom (`936506371879354388`) is unlimited. Exceptions for other servers require
