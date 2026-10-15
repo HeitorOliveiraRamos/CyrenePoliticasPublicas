@@ -30,6 +30,7 @@ As regras de uso do bot estão nos [Termos de Serviço](TERMOS.md).
 | Política de IA, consumo agregado e recibos técnicos de atendimento | Quando a IA é solicitada ou o operador altera a política | Aplicar franquias, evitar cobrança duplicada e reconciliar entregas, sem gravar conteúdo de conversa nesses registros |
 
 O catálogo público do jogo (personagens, relíquias, banners, materiais) não é um perfil de usuário.
+Estatísticas públicas de terceiros de LvlUrArti/MocData são guardadas de forma anônima: registros individuais e builds nas três fases mais recentes e agregados históricos, ligados apenas pelo contador anônimo da fonte, sem vínculo com contas do Discord ou UIDs do jogo.
 
 ### Leitura de contexto do Discord
 
@@ -406,6 +407,7 @@ The rules for using the bot are in the [Terms of Service](TERMOS.md).
 | AI policy, aggregate usage and technical request receipts | When AI is requested or the operator changes a policy | Enforce allowances, prevent duplicate accounting and reconcile deliveries, without storing conversation content in these records |
 
 The public game catalog (characters, relics, banners, materials) is not a user profile.
+Public third-party statistics from LvlUrArti/MocData are stored anonymously: individual runs and builds for the three most recent phases and historical aggregates, linked only by the source's anonymous counter, with no link to Discord accounts or in-game UIDs.
 
 ### Reading Discord context
 
