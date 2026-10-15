@@ -1,6 +1,6 @@
 # Política de Privacidade — CyreneBot
 
-**Proposta de atualização: 12 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 15 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail. Esta página explica, sem rodeio, o
 que ele guarda sobre você, por quanto tempo, com quem isso é compartilhado, como pedir a exclusão
@@ -17,7 +17,7 @@ As regras de uso do bot estão nos [Termos de Serviço](TERMOS.md).
 |---|---|---|
 | Seu ID de usuário do Discord e seu nome de exibição atual | Na primeira vez que você fala comigo ou usa um comando | É o que liga uma coisa à outra: sua nota, sua memória, seu UID. O nome existe pra eu te chamar pelo nome |
 | O texto que você escreve no `/memoria`, seu ID e o escopo de servidor ou DM | Só quando você abre o `/memoria` e escreve | Lembrar de você naquele escopo, sem levar a memória de outro servidor ou DM. É livre: você decide o que vai ali |
-| Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank` |
+| Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank`, e, se o seu histórico de batalha da HoYoLAB estiver público, suas estrelas de endgame pro `/perfil` |
 | Conteúdo das mensagens que você endereça a mim | Menção, resposta a uma mensagem minha, ou uma sessão aberta com `/iniciar-conversa` | Entender a pergunta e responder. Sessões do `/iniciar-conversa` guardam o par pergunta/resposta pra conversa ter fio |
 | Evidências factuais e fontes sobre o jogo | Quando uma consulta elegível sobre HSR encontra informação reutilizável | Cache de evidências, sem compartilhar a resposta personalizada. Entradas antigas de respostas deixam de ser usadas e seguem a poda da seção 3 |
 | Nota das suas builds, apelido no jogo, nível e eidolon | Quando você roda o `/build` | Montar o card e o ranking do `/rank` |
@@ -194,6 +194,16 @@ O que sai da minha infraestrutura, e só o necessário:
 - **Discord** — porque é onde o bot vive.
 - **Enka.Network e Mihomo** (serviços públicos de vitrine de HSR) — recebem **o UID do jogo** quando
   você roda `/build` ou `/perfil`. Nada do seu Discord vai junto.
+- **HoYoLAB** (HoYoverse) — quando o seu `/perfil` é aberto (por você ou por alguém que pediu o seu
+  perfil, inclusive pelos botões de página), o bot consulta **o UID do jogo** no histórico de batalha
+  da HoYoLAB, usando uma conta da própria Cyrene, não a sua. Só funciona se você deixou o histórico
+  público nas configurações da HoYoLAB. O resultado (estrelas da Memória do Caos, Pura Ficção, Sombra
+  Apocalíptica e Arbitragem de Anomalias) não é gravado em banco: fica na memória do bot por até
+  6 horas, então fechar o histórico tira o endgame do card em até 6 horas. O card publicado no
+  Discord, com as estrelas desenhadas e descritas no texto alternativo da imagem, fica lá como
+  qualquer mensagem. Pra que ninguém gaste sozinho o limite diário da conta da Cyrene, o bot também
+  anota na memória, até a virada do dia (UTC), quais UIDs cada membro fez consultar (no máximo três
+  novos por dia); isso não vai pro banco. O bot nunca pede login, senha ou cookie da sua conta.
 - **Buscadores** — quando eu não sei responder algo sobre o jogo com o que tenho, uma busca sobre
   **o assunto da pergunta** é enviada, através de uma instância própria de metabusca, a mecanismos
   de busca públicos. Vai o assunto pesquisado, não sua identidade.
@@ -347,7 +357,7 @@ verdade o que é guardado, por quanto tempo ou com quais provedores é compartil
 
 # Privacy Policy — CyreneBot
 
-**Proposed update: October 12, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 15, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail. This page explains what it stores about
@@ -362,7 +372,7 @@ The rules for using the bot are in the [Terms of Service](TERMOS.md).
 |---|---|---|
 | Your Discord user ID and current display name | The first time you talk to the bot or use a command | It is what ties everything together: your score, your memory, your UID. The name is so the bot can address you by name |
 | The text you write in `/memoria`, your ID and its server or DM scope | Only when you open `/memoria` and write something | Remembering you in that scope without bringing memory from another server or DM. It is free-form: you decide what goes there |
-| Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank` |
+| Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank`, and, if your HoYoLAB battle chronicle is public, your endgame stars for `/perfil` |
 | The content of messages you address to the bot | An @mention, a reply to one of the bot's messages, or a session you opened with `/iniciar-conversa` | Understanding and answering the question. `/iniciar-conversa` sessions store the question/answer pair so the conversation keeps its thread |
 | Factual game evidence and sources | When an eligible HSR query finds reusable information | An evidence cache, without sharing the personalized answer. Old answer entries are no longer used and follow section 3 pruning |
 | Your build scores, in-game nickname, level and eidolon | When you run `/build` | Drawing the card and the `/rank` leaderboard |
@@ -535,6 +545,17 @@ What leaves the bot's infrastructure, and only as needed:
 - **Discord** — because that is where the bot lives.
 - **Enka.Network and Mihomo** (public HSR showcase services) — they receive **the in-game UID** when
   you run `/build` or `/perfil`. Nothing about your Discord account goes with it.
+- **HoYoLAB** (HoYoverse) — when your `/perfil` is opened (by you or by someone who asked for your
+  profile, page buttons included), the bot looks up **the in-game UID** in the HoYoLAB battle
+  chronicle, using an account owned by Cyrene, not yours. It only works if you made your battle
+  chronicle public in the HoYoLAB settings. The result (Memory of Chaos, Pure Fiction, Apocalyptic
+  Shadow and Anomaly Arbitration stars) is not written to the database: it stays in the bot's memory
+  for up to 6 hours, so making the chronicle private removes the endgame from the card within 6 hours.
+  The card posted on Discord, with the stars drawn on it and described in the image's alt text, stays
+  there like any message. So that no one burns the daily limit of Cyrene's account alone, the bot also
+  notes in memory, until the day turns over (UTC), which UIDs each member caused to be looked up (at
+  most three new ones a day); this is not written to the database. The bot never asks for your
+  account login, password or cookies.
 - **Search engines** — when the bot cannot answer a game question from what it already has, a search
   about **the subject of the question** is sent, through a self-hosted metasearch instance, to
   public search engines. The subject is sent, not your identity.

@@ -1,6 +1,6 @@
 # Termos de Serviço — CyreneBot
 
-**Proposta de atualização: 12 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
+**Proposta de atualização: 15 de outubro de 2026 — em revisão, ainda não em vigor.** *(English version below / versão em inglês no fim.)*
 
 CyreneBot é um bot do Discord sobre o jogo Honkai: Star Rail, mantido por `HEITOR OLIVEIRA RAMOS`
 como projeto pessoal e gratuito. Esta página é o combinado entre você e eu sobre o uso dele: o que
@@ -183,7 +183,7 @@ Não respondo por:
   material queimado;
 - indisponibilidade, lentidão, perda de dado por falha técnica, ou comando removido;
 - o que outra pessoa escreve nas guias, tier lists ou no chat;
-- o que os serviços de terceiros fazem ou deixam de fazer (Discord, Enka.Network, Mihomo,
+- o que os serviços de terceiros fazem ou deixam de fazer (Discord, Enka.Network, Mihomo, HoYoLAB,
   buscadores, serviços de dado do jogo);
 - punição que você receba do Discord ou do jogo por uso indevido do bot.
 
@@ -225,7 +225,7 @@ caso em que vale o foro do seu domicílio, como manda o CDC.
 
 # Terms of Service — CyreneBot
 
-**Proposed update: October 12, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
+**Proposed update: October 15, 2026 — under review, not yet effective.** *(Portuguese is the version written for the bot's users; this
 English translation says the same things.)*
 
 CyreneBot is a Discord bot about the game Honkai: Star Rail, maintained by `HEITOR OLIVEIRA RAMOS`
@@ -410,8 +410,8 @@ The developer is not responsible for:
   burned;
 - downtime, slowness, data loss from technical failure, or a removed command;
 - what other people write in guides, tier lists or chat;
-- what third-party services do or fail to do (Discord, Enka.Network, Mihomo, search engines, game
-  data services);
+- what third-party services do or fail to do (Discord, Enka.Network, Mihomo, HoYoLAB, search engines,
+  game data services);
 - penalties you receive from Discord or the game for misusing the bot.
 
 Nothing here excludes liability for intentional misconduct or gross negligence, nor any right
