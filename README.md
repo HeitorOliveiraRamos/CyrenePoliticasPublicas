@@ -17,8 +17,8 @@ As regras de uso do bot estão nos [Termos de Serviço](TERMOS.md).
 |---|---|---|
 | Seu ID de usuário do Discord e seu nome de exibição atual | Na primeira vez que você fala comigo ou usa um comando | É o que liga uma coisa à outra: sua nota, sua memória, seu UID. O nome existe pra eu te chamar pelo nome |
 | O texto que você escreve no `/memoria`, seu ID e o escopo de servidor ou DM | Só quando você abre o `/memoria` e escreve | Lembrar de você naquele escopo, sem levar a memória de outro servidor ou DM. É livre: você decide o que vai ali |
-| Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank`, e, se o seu histórico de batalha da HoYoLAB estiver público, seu endgame pro `/perfil` e pras médias de quem usa a Cyrene (seção 4) |
-| Fim de jogo do seu UID lido da HoYoLAB: times, eidolons, ciclos ou pontos, estrelas, buff, e quando foi a última consulta | Quando seu `/perfil` é aberto e numa varredura automática de todo UID vinculado, sem você precisar fazer nada, se o histórico estiver público | Médias de ciclos e pontos e times usados, entre quem usa a Cyrene (seção 4) |
+| Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank`, e, se o seu histórico de batalha da HoYoLAB estiver público, seu endgame pro `/perfil` e pro `/endgame` e pras médias de quem usa a Cyrene (seção 4) |
+| Fim de jogo do seu UID lido da HoYoLAB: times, eidolons, ciclos ou pontos, estrelas, buff, e quando foi a última consulta | Quando seu `/perfil` ou `/endgame` é aberto e numa varredura automática de todo UID vinculado, sem você precisar fazer nada, se o histórico estiver público | O card do `/endgame` com os seus times, e as médias de ciclos e pontos e times usados, entre quem usa a Cyrene (seção 4) |
 | Conteúdo das mensagens que você endereça a mim | Menção, resposta a uma mensagem minha, ou uma sessão aberta com `/iniciar-conversa` | Entender a pergunta e responder. Sessões do `/iniciar-conversa` guardam o par pergunta/resposta pra conversa ter fio |
 | Evidências factuais e fontes sobre o jogo | Quando uma consulta elegível sobre HSR encontra informação reutilizável | Cache de evidências, sem compartilhar a resposta personalizada. Entradas antigas de respostas deixam de ser usadas e seguem a poda da seção 3 |
 | Nota das suas builds, apelido no jogo, e a build de cada personagem da vitrine como estava quando foi vista: nível, eidolon, cone de luz, relíquias e atributos | Quando você, ou alguém apontando pra você, roda o `/build` ou o `/perfil`, e quando o dono do bot relê de uma vez as vitrines dos UIDs vinculados | Montar o card e o ranking do `/rank`; recalcular sua nota quando os pesos da avaliação mudam; avaliar no `/build` uma personagem que já saiu da vitrine (a build salva continua visível pra quem rodar `/build` sobre você, com a data em que foi vista); e dizer à IA quais personagens a conta tem, com eidolon e cone, ao sugerir times |
@@ -201,12 +201,16 @@ O que sai da minha infraestrutura, e só o necessário:
 - **Enka.Network e Mihomo** (serviços públicos de vitrine de HSR) — recebem **o UID do jogo** quando
   você roda `/build` ou `/perfil`. Nada do seu Discord vai junto.
 - **HoYoLAB** (HoYoverse) — o bot consulta **o UID do jogo** no histórico de batalha da HoYoLAB,
-  usando uma conta da própria Cyrene, não a sua, em dois momentos: quando o seu `/perfil` é aberto
-  (por você ou por alguém que pediu o seu perfil, inclusive pelos botões de página) e numa varredura
+  usando uma conta da própria Cyrene, não a sua, em dois momentos: quando o seu `/perfil` ou o seu
+  `/endgame` é aberto (por você ou por alguém que pediu o seu, inclusive pelos botões de página) e numa varredura
   automática que passa por **todo UID vinculado com `/uid`**, um por vez, em geral uma vez a cada
   3 dias ou mais por UID. Só funciona se você deixou o histórico público nas configurações da HoYoLAB.
-  O painel do card (estrelas da Memória do Caos, Pura Ficção, Sombra Apocalíptica e Arbitragem de
-  Anomalias) fica na memória do bot por até 6 horas. **Do ciclo em cartaz, o bot grava em banco**,
+  O que foi lido (as estrelas da Memória do Caos, Pura Ficção, Sombra Apocalíptica e Arbitragem de
+  Anomalias e os times de cada lado) fica na memória do bot por até 6 horas. O `/endgame` mostra num
+  card, **no canal onde foi pedido e pra quem estiver nele**, o último andar que você fez em cada modo
+  (e os Cavalos e o Rei da Arbitragem): os times com personagens e eidolons, as estrelas, os ciclos
+  ou pontos e o buff, junto com o seu nome no servidor e o seu UID. Qualquer membro pode pedir o
+  `/endgame` de quem tem UID vinculado, como já acontece com o `/perfil`. **Do ciclo em cartaz, o bot grava em banco**,
   por UID e por lado jogado, o time usado (personagens e eidolons), os ciclos ou pontos, as estrelas
   e o buff escolhido, e a data da última consulta ao seu UID com o resultado (lido, fechado, fora do
   ar ou servidor não suportado). Isso serve pra calcular as médias de ciclos e pontos e os times
@@ -394,8 +398,8 @@ The rules for using the bot are in the [Terms of Service](TERMOS.md).
 |---|---|---|
 | Your Discord user ID and current display name | The first time you talk to the bot or use a command | It is what ties everything together: your score, your memory, your UID. The name is so the bot can address you by name |
 | The text you write in `/memoria`, your ID and its server or DM scope | Only when you open `/memoria` and write something | Remembering you in that scope without bringing memory from another server or DM. It is free-form: you decide what goes there |
-| Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank`, and, if your HoYoLAB battle chronicle is public, your endgame for `/perfil` and for the averages across Cyrene users (section 4) |
-| Endgame for your UID read from HoYoLAB: teams, eidolons, cycles or points, stars, buff, and when it was last looked up | When your `/perfil` is opened and in an automatic sweep of every linked UID, with no action from you, if the chronicle is public | Average cycles and points and teams used, across Cyrene users (section 4) |
+| Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank`, and, if your HoYoLAB battle chronicle is public, your endgame for `/perfil` and `/endgame` and for the averages across Cyrene users (section 4) |
+| Endgame for your UID read from HoYoLAB: teams, eidolons, cycles or points, stars, buff, and when it was last looked up | When your `/perfil` or `/endgame` is opened and in an automatic sweep of every linked UID, with no action from you, if the chronicle is public | The `/endgame` card with your teams, and average cycles and points and teams used, across Cyrene users (section 4) |
 | The content of messages you address to the bot | An @mention, a reply to one of the bot's messages, or a session you opened with `/iniciar-conversa` | Understanding and answering the question. `/iniciar-conversa` sessions store the question/answer pair so the conversation keeps its thread |
 | Factual game evidence and sources | When an eligible HSR query finds reusable information | An evidence cache, without sharing the personalized answer. Old answer entries are no longer used and follow section 3 pruning |
 | Your build scores, in-game nickname, and each showcased character's build as it was when last seen: level, eidolon, light cone, relics and stats | When you, or someone pointing at you, runs `/build` or `/perfil`, and when the bot owner re-reads the showcases of all linked UIDs at once | Drawing the card and the `/rank` leaderboard; recalculating your score when the rating weights change; rating on `/build` a character that has left the showcase (the saved build stays visible to anyone who runs `/build` on you, with the date it was seen); and telling the AI which characters the account has, with eidolon and light cone, when it suggests teams |
@@ -574,13 +578,17 @@ What leaves the bot's infrastructure, and only as needed:
 - **Enka.Network and Mihomo** (public HSR showcase services) — they receive **the in-game UID** when
   you run `/build` or `/perfil`. Nothing about your Discord account goes with it.
 - **HoYoLAB** (HoYoverse) — the bot looks up **the in-game UID** in the HoYoLAB battle chronicle,
-  using an account owned by Cyrene, not yours, at two moments: when your `/perfil` is opened (by you
-  or by someone who asked for your profile, page buttons included) and in an automatic sweep that
+  using an account owned by Cyrene, not yours, at two moments: when your `/perfil` or `/endgame` is
+  opened (by you or by someone who asked for yours, page buttons included) and in an automatic sweep that
   goes through **every UID linked with `/uid`**, one at a time, usually once every 3 days or more
   per UID.
-  It only works if you made your battle chronicle public in the HoYoLAB settings. The card panel
-  (Memory of Chaos, Pure Fiction, Apocalyptic Shadow and Anomaly Arbitration stars) stays in the
-  bot's memory for up to 6 hours. **For the current cycle, the bot writes to the database**, per UID
+  It only works if you made your battle chronicle public in the HoYoLAB settings. What was read
+  (Memory of Chaos, Pure Fiction, Apocalyptic Shadow and Anomaly Arbitration stars, and the teams of
+  each side) stays in the bot's memory for up to 6 hours. `/endgame` shows in a card, **in the
+  channel where it was asked and to whoever is in it**, the last floor you cleared in each mode (and
+  the Knights and the King of Anomaly Arbitration): the teams with characters and eidolons, the
+  stars, the cycles or points and the buff, along with your server nickname and your UID. Any member
+  can ask for the `/endgame` of someone with a linked UID, as already happens with `/perfil`. **For the current cycle, the bot writes to the database**, per UID
   and per side played, the team used (characters and eidolons), the cycles or points, the stars and
   the chosen buff, plus the date of the last lookup of your UID and its outcome (read, private,
   unavailable or unsupported server). This is used to compute average cycles and points and the
