@@ -101,6 +101,22 @@ anônimos. A reconciliação pode consultar uma janela limitada de mensagens do 
 Discord, sem copiar seu conteúdo para o recibo. A auditoria de configuração/política registra o
 ID de quem fez a alteração, sem copiar o conteúdo privado alterado.
 
+### Cards e tier lists montados no site
+
+Em `expressopompom.com/hsr/cards/` e `expressopompom.com/hsr/tierlist/` você monta, sem login, um
+card de build, um card de ascensão ou uma tier list. O rascunho (as escolhas e o nome opcional que
+você digita para aparecer na tier list) fica só no armazenamento do seu navegador, não no bot; apagar
+os dados do site no navegador apaga o rascunho.
+
+Para desenhar a imagem, o navegador envia ao servidor da Cyrene (`cyrene.expressopompom.com`)
+somente o que vai no card: as escolhas, o nome digitado e, se você enviar, a sua arte. O servidor
+desenha, devolve a imagem e descarta tudo: nada disso é gravado no banco, em arquivo ou em backup, e a
+arte passa apenas por um arquivo temporário apagado ao fim do desenho. O pedido não leva cookie, conta
+do Discord ou identificação sua. Como em qualquer acesso pela internet, o endereço IP da conexão passa
+pela Cloudflare e pelo servidor para entregar a resposta; o bot não o associa a você nem o guarda. O que
+você monta no site não é publicado nem mostrado a outras pessoas, e guias e tier lists publicadas no
+Discord não aparecem no site.
+
 ### Memória manual por escopo
 
 A memória manual passa a ser ligada a você e ao servidor em que foi escrita; DMs têm escopo
@@ -480,6 +496,22 @@ hashes are still technical metadata, not necessarily anonymous data. Reconciliat
 a limited window of the bot's own Discord messages, without copying their content into the
 receipt. Configuration/policy audits record the changing administrator's ID without copying
 the private content changed.
+
+### Cards and tier lists built on the website
+
+At `expressopompom.com/hsr/cards/` and `expressopompom.com/hsr/tierlist/` you can build a build card,
+an ascension card or a tier list without logging in. The draft (your choices and the optional name you
+type to appear on the tier list) stays only in your browser's storage, not in the bot; clearing the
+site's data in your browser deletes it.
+
+To draw the image, the browser sends the Cyrene server (`cyrene.expressopompom.com`) only what goes on
+the card: your choices, the name you typed and, if you upload one, your art. The server draws, returns
+the image and discards everything: none of it is written to the database, to a file or to a backup, and
+the art only passes through a temporary file deleted when the drawing ends. The request carries no
+cookie, no Discord account and nothing that identifies you. As with any access over the internet, the
+connection's IP address passes through Cloudflare and the server to deliver the response; the bot does
+not link it to you or store it. What you build on the website is not published or shown to anyone else,
+and guides and tier lists published on Discord do not appear on the website.
 
 ### Manual memory by scope
 

@@ -109,6 +109,10 @@ de direito autoral, sem aviso prévio.
 `/apagar-meus-dados` desliga seu nome do conteúdo já publicado, mas o conteúdo em si pode continuar
 no ar pra comunidade. Quer a guia fora do ar, e não só desvinculada? Peça pelo [Contato](#contato).
 
+**No site** (`expressopompom.com/hsr/cards/` e `/hsr/tierlist/`), o card ou a tier list que você monta
+não é publicado: a imagem é desenhada e devolvida só para você, e nada fica guardado. As mesmas regras
+de arte valem lá: só envie imagem que é sua ou que você tem direito de usar.
+
 ## 5. As respostas da IA
 
 O processamento pode ser local ou usar provedores externos, conforme a configuração informada na
@@ -336,6 +340,10 @@ unpublished or deleted without prior notice.
 `/apagar-meus-dados` unlinks your name from already-published content, but the content itself may
 stay up for the community. Want the guide taken down, not just unlinked? Ask through
 [Contact](#contact-1).
+
+**On the website** (`expressopompom.com/hsr/cards/` and `/hsr/tierlist/`), the card or tier list you
+build is not published: the image is drawn and returned only to you, and nothing is kept. The same art
+rules apply there: only upload an image that is yours or that you have the right to use.
 
 ## 5. The AI's answers
 
