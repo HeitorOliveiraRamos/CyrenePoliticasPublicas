@@ -129,19 +129,21 @@ escopo desejado; a exclusão do perfil remove também o texto antigo.
 
 Quando o responsável habilita a conversa com **Sign in with ChatGPT**, o bot pode aprender
 preferências ou fatos pessoais úteis fornecidos por você nas próprias conversas com a Cyrene.
-Quando o recurso está habilitado, a aprendizagem começa ligada por padrão; não exige um
-`/memoria acao:ligar` inicial. Há até 20 entradas recuperáveis por escopo, com até 400 caracteres
+Quando o recurso está habilitado, a aprendizagem começa ligada por padrão; não exige ativação
+manual inicial. Há até 20 entradas recuperáveis por escopo, com até 400 caracteres
 cada. São registros separados da memória manual: conteúdo, chave do fato, seu ID Discord, escopo,
 IDs da mensagem/canal de origem e datas. Não substituem o texto que você escreveu no `/memoria`.
 Memórias de servidor só são usadas para você naquele servidor; DMs ficam separadas. A memória
 manual também segue o escopo descrito acima. Não envie segredos; filtros não são
 uma garantia de detecção de toda informação sensível.
 
-Use `/memoria acao:ver`, `corrigir` (com `chave` e `texto`), `apagar` (com `chave`), `limpar`,
-`desligar` ou `ligar`. A inspeção é privada. Limpar atua no escopo atual; desligar interrompe
+Use `/memoria` para abrir a tela do escopo atual: ela mostra sua memória manual e as memórias
+aprendidas já marcadas num seletor (desmarcar apaga a entrada; desmarcar todas limpa o escopo),
+além de um campo opcional de correção (`chave: novo texto`) e da caixa para ligar ou desligar a
+aprendizagem automática. A inspeção é privada. Limpar atua no escopo atual; desligar interrompe
 novas gravações automáticas em todos os escopos, inclusive propostas em andamento, sem apagar as
 entradas existentes. Elas continuam no contexto e nos controles de consulta, correção e exclusão;
-para retirar uma memória do contexto, apague a entrada ou limpe o escopo.
+para retirar uma memória do contexto, desmarque a entrada no seletor de `/memoria`.
 Alterações invalidam propostas pendentes. `/apagar-meus-dados` remove as memórias, recibos e
 preferências de aprendizagem, conforme as exceções gerais da seção 5.
 Entradas expiram da recuperação após 30 dias sem atualização; o código prevê remoção na próxima
@@ -343,8 +345,8 @@ administrativas; esses registros seguem os prazos da seção 3. Para pedidos sob
 Pra qualquer outro pedido — inclusive uma cópia dos seus dados — use o [Contato](#contato). Respondo
 em até 7 dias.
 
-Para parar uma sessão, use `/encerrar-conversa`; para impedir novas memórias aprendidas, use
-`/memoria acao:desligar` e apague ou limpe as entradas que não quer no contexto. Parar de mencionar
+Para parar uma sessão, use `/encerrar-conversa`; para impedir novas memórias aprendidas, desmarque
+a caixa de aprendizado automático em `/memoria` e desmarque as entradas que não quer no contexto. Parar de mencionar
 o bot não impede a leitura de seus textos em recortes solicitados por outras pessoas. A administração
 pode desligar a IA no servidor com `/ia` e bloquear canais com `/permissoes`. Para outros pedidos
 ou oposição ao uso de seus dados, use o Contato.
@@ -526,17 +528,19 @@ also removes the old text.
 When the operator enables conversations through **Sign in with ChatGPT**, the bot may learn useful
 preferences or personal facts you provide in your own Cyrene conversations. These are separate
 records: content, fact key, Discord owner ID, scope, source message/channel IDs and timestamps.
-When the feature is enabled, learning defaults to on; no initial `/memoria acao:ligar` is required.
+When the feature is enabled, learning defaults to on; no initial manual activation is required.
 There are up to 20 retrievable entries per scope, with up to 400 characters each.
 They never overwrite your manually authored `/memoria` text. Server memories are used only for
 you in that server; DM memories stay separate. Manual memory also follows the scope described above.
 Do not send secrets; filters cannot guarantee detection of every sensitive detail.
 
-Use `/memoria acao:ver`, `corrigir` (with `chave` and `texto`), `apagar` (with `chave`), `limpar`,
-`desligar` or `ligar`. Inspection is private. Clearing affects the current scope; disabling stops
+Use `/memoria` to open the current scope's screen: it displays your manual memory, a selector with
+your learned memories pre-selected (unchecking deletes an entry; unchecking all clears the scope),
+an optional correction field (`key: new text`), and a checkbox to enable or disable automatic
+learning. Inspection is private. Clearing affects the current scope; disabling stops
 new automatic writes across all scopes, including pending proposals, without deleting existing entries.
-Existing memories remain in context and available for viewing, correction and deletion; delete an entry
-or clear its scope to remove it from context. Changes
+Existing memories remain in context and available for viewing, correction and deletion; uncheck an entry
+in `/memoria` to remove it from context. Changes
 invalidate pending proposals. `/apagar-meus-dados` removes all entries and learning preferences.
 Entries stop being retrieved after 30 days without updates; the code schedules removal at the
 next daily pruning run, subject to failure or downtime. The dump script excludes entry and receipt content; the learning preference follows the profile
@@ -739,8 +743,8 @@ these records.
 For any other request — including a copy of your data — use [Contact](#contact-1). Answered within
 7 days.
 
-Use `/encerrar-conversa` to end a session; use `/memoria acao:desligar` to stop new learned-memory
-writes, and delete or clear entries you do not want in context. Not mentioning the bot does not
+Use `/encerrar-conversa` to end a session; uncheck the automatic learning box in `/memoria` to stop new learned-memory
+writes, and uncheck entries you do not want in context. Not mentioning the bot does not
 prevent your text from being read in excerpts requested by others. Server administrators can disable
 AI with `/ia` and block channels with `/permissoes`. Use Contact for other requests or objections
 to processing your data.
