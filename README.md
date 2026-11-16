@@ -19,6 +19,7 @@ As regras de uso do bot estão nos [Termos de Serviço](TERMOS.md).
 | O texto que você escreve no `/memoria`, seu ID e o escopo de servidor ou DM | Só quando você abre o `/memoria` e escreve | Lembrar de você naquele escopo, sem levar a memória de outro servidor ou DM. É livre: você decide o que vai ali |
 | Seu UID do jogo (`/uid`) | Só quando você roda o `/uid` | Buscar sua vitrine pública no jogo pros comandos `/build`, `/perfil` e `/rank`, e, se o seu histórico de batalha da HoYoLAB estiver público, seu endgame pro `/perfil` e pro `/endgame` e pras médias de quem usa a Cyrene (seção 4) |
 | Fim de jogo do seu UID lido da HoYoLAB: times, eidolons, ciclos ou pontos, estrelas, buff, e quando foi a última consulta | Quando seu `/perfil` ou `/endgame` é aberto e numa varredura automática de todo UID vinculado, sem você precisar fazer nada, se o histórico estiver público | O card do `/endgame` com os seus times, e as médias de ciclos e pontos e times usados, entre quem usa a Cyrene (seção 4) |
+| Resumo e Universos do seu UID lidos da HoYoLAB: dias ativos, baús abertos, o brasão do rank da Arbitragem de Anomalias e o progresso nos modos do Universo (Divergente, Simulado, Desastre do Enxame, Ouro e Engrenagens e Domínio Incógnito), com a data da leitura | Quando seu `/perfil` é aberto (os Universos só quando alguém abre a página deles), se o histórico estiver público | Mostrar no card do `/perfil`. Só a última leitura de cada UID fica guardada, pro card continuar mostrando os números, com a data, quando a HoYoLAB não puder ser consultada (seção 4) |
 | Conteúdo das mensagens que você endereça a mim | Menção, resposta a uma mensagem minha, ou uma sessão aberta com `/iniciar-conversa` | Entender a pergunta e responder. Sessões do `/iniciar-conversa` guardam o par pergunta/resposta pra conversa ter fio |
 | Evidências factuais e fontes sobre o jogo | Quando uma consulta elegível sobre HSR encontra informação reutilizável | Cache de evidências, sem compartilhar a resposta personalizada. Entradas antigas de respostas deixam de ser usadas e seguem a poda da seção 3 |
 | Nota das suas builds, apelido no jogo, e a build de cada personagem da vitrine como estava quando foi vista: nível, eidolon, cone de luz, relíquias, atributos e a roupa que ela veste | Quando você, ou alguém apontando pra você, roda o `/build` ou o `/perfil`, e quando o dono do bot relê de uma vez as vitrines dos UIDs vinculados | Montar o card (com a arte da roupa vestida) e o ranking do `/rank`; recalcular sua nota quando os pesos da avaliação mudam; avaliar no `/build` uma personagem que já saiu da vitrine (a build salva continua visível pra quem rodar `/build` sobre você, com a data em que foi vista); e dizer à IA quais personagens a conta tem, com eidolon e cone, ao sugerir times |
@@ -193,6 +194,11 @@ de conta e UID substituídos. Esses diagnósticos não incluem os identificadore
   tiver acabado há mais de 60 dias; em qualquer caso, nenhum registro passa de 120 dias desde a última
   leitura. Trocar o UID apaga os registros do antigo em até 15 minutos com o bot no ar (salvo se outra
   pessoa tiver o mesmo UID vinculado); o `/apagar-meus-dados` apaga na hora.
+- **Resumo e Universos lidos da HoYoLAB:** só a última leitura de cada UID. Sai quando o UID deixa
+  de estar vinculado (em até 15 minutos com o bot no ar, salvo se outra pessoa tiver o mesmo UID),
+  depois de 30 dias sem leitura nova, quando a HoYoLAB responde que o histórico está fechado, ou na
+  hora pelo `/apagar-meus-dados`. A lista de UIDs que a conta da Cyrene consultou em cada dia, sem
+  ligação com quem pediu, fica no máximo 2 dias.
 - **Advertências de moderação:** não expiram. Elas são o registro do servidor sobre o que aconteceu
   lá, incluem dados pessoais e não são apagadas por esse comando. Pedidos sobre esses registros
   devem ser encaminhados pelo Contato.
@@ -224,7 +230,12 @@ O que sai da minha infraestrutura, e só o necessário:
   automática que passa por **todo UID vinculado com `/uid`**, um por vez, em geral uma vez a cada
   3 dias ou mais por UID. Só funciona se você deixou o histórico público nas configurações da HoYoLAB.
   O que foi lido (as estrelas da Memória do Caos, Pura Ficção, Sombra Apocalíptica e Arbitragem de
-  Anomalias e os times de cada lado) fica na memória do bot por até 6 horas. O `/endgame` mostra num
+  Anomalias e os times de cada lado) fica na memória do bot por até 6 horas. No `/perfil` o bot também
+  lê o resumo do histórico (dias ativos, baús abertos e o brasão do rank da Arbitragem) e, quando
+  alguém abre a página dos Universos, o seu progresso nos modos do Universo; isso fica na memória por
+  até 24 horas, e a última leitura completa de cada UID vai pro banco (seções 1 e 3). Se a HoYoLAB
+  não puder ser consultada (limite diário, captcha, fora do ar), o card mostra essa leitura guardada
+  com a data dela. Histórico fechado não usa a leitura guardada e ainda a apaga. O `/endgame` mostra num
   card, **no canal onde foi pedido e pra quem estiver nele**, o último andar que você fez em cada modo
   (e os Cavalos e o Rei da Arbitragem): os times com personagens e eidolons, as estrelas, os ciclos
   ou pontos e o buff, junto com o seu nome no servidor e o seu UID. Qualquer membro pode pedir o
@@ -246,7 +257,9 @@ O que sai da minha infraestrutura, e só o necessário:
   Discord, com as estrelas desenhadas e descritas no texto alternativo da imagem, fica lá como
   qualquer mensagem. Pra que ninguém gaste sozinho o limite diário da conta da Cyrene, o bot também
   anota na memória, até a virada do dia (UTC), quais UIDs cada membro fez consultar (no máximo três
-  novos por dia); isso não vai pro banco. O bot nunca pede login, senha ou cookie da sua conta.
+  novos por dia); isso não vai pro banco. Já a lista de UIDs que a conta da Cyrene consultou no dia,
+  sem dizer quem pediu, vai pro banco por até 2 dias, pra que um reinício do bot não zere essa conta.
+  O bot nunca pede login, senha ou cookie da sua conta.
 - **Buscadores** — quando eu não sei responder algo sobre o jogo com o que tenho, uma busca sobre
   **o assunto da pergunta** é enviada, através de uma instância própria de metabusca, a mecanismos
   de busca públicos. Vai o assunto pesquisado, não sua identidade.
@@ -334,8 +347,8 @@ seus dados. Na prática, sem pedir nada a ninguém:
 `/apagar-meus-dados` abre um formulário com a prévia e uma caixa de confirmação. Sem marcar a
 caixa, nada é apagado. Confirmando, a exclusão não tem desfazer: remove perfil, nome guardado, UID,
 memória manual e aprendida, preferências e recibos de aprendizagem, sessões e trocas vinculadas,
-notas e histórico de builds, o endgame lido da HoYoLAB pro seu UID (inclusive o de quem divide o
-mesmo UID com você), seus votos e rascunhos. Guias e tier lists publicadas são anonimizadas;
+notas e histórico de builds, o endgame, o resumo e os Universos lidos da HoYoLAB pro seu UID
+(inclusive o de quem divide o mesmo UID com você), seus votos e rascunhos. Guias e tier lists publicadas são anonimizadas;
 advertências de moderação permanecem. Caches e IDs de respostas sem vínculo direto com o perfil
 não são apagados por esse comando; o conteúdo dos caches segue a poda da seção 3. O comando não
 apaga mensagens do Discord nem cópias mantidas por terceiros ou backups já existentes. Também
@@ -418,6 +431,7 @@ The rules for using the bot are in the [Terms of Service](TERMOS.md).
 | The text you write in `/memoria`, your ID and its server or DM scope | Only when you open `/memoria` and write something | Remembering you in that scope without bringing memory from another server or DM. It is free-form: you decide what goes there |
 | Your in-game UID (`/uid`) | Only when you run `/uid` | Fetching your public in-game showcase for `/build`, `/perfil` and `/rank`, and, if your HoYoLAB battle chronicle is public, your endgame for `/perfil` and `/endgame` and for the averages across Cyrene users (section 4) |
 | Endgame for your UID read from HoYoLAB: teams, eidolons, cycles or points, stars, buff, and when it was last looked up | When your `/perfil` or `/endgame` is opened and in an automatic sweep of every linked UID, with no action from you, if the chronicle is public | The `/endgame` card with your teams, and average cycles and points and teams used, across Cyrene users (section 4) |
+| Summary and Universes for your UID read from HoYoLAB: active days, chests opened, the Anomaly Arbitration rank badge and progress in the Universe modes (Divergent, Simulated, Swarm Disaster, Gold and Gears and Unknowable Domain), with the date it was read | When your `/perfil` is opened (the Universes only when someone opens their page), if the chronicle is public | Showing them on the `/perfil` card. Only the latest reading per UID is kept, so the card can keep showing the numbers, with their date, when HoYoLAB cannot be queried (section 4) |
 | The content of messages you address to the bot | An @mention, a reply to one of the bot's messages, or a session you opened with `/iniciar-conversa` | Understanding and answering the question. `/iniciar-conversa` sessions store the question/answer pair so the conversation keeps its thread |
 | Factual game evidence and sources | When an eligible HSR query finds reusable information | An evidence cache, without sharing the personalized answer. Old answer entries are no longer used and follow section 3 pruning |
 | Your build scores, in-game nickname, and each showcased character's build as it was when last seen: level, eidolon, light cone, relics, stats and the outfit they wear | When you, or someone pointing at you, runs `/build` or `/perfil`, and when the bot owner re-reads the showcases of all linked UIDs at once | Drawing the card (with the art of the outfit worn) and the `/rank` leaderboard; recalculating your score when the rating weights change; rating on `/build` a character that has left the showcase (the saved build stays visible to anyone who runs `/build` on you, with the date it was seen); and telling the AI which characters the account has, with eidolon and light cone, when it suggests teams |
@@ -589,6 +603,11 @@ do not include known owner identifiers or game UIDs.
   ended more than 60 days ago; in any case, no record outlives 120 days since its last lookup.
   Changing the UID deletes the old one's records within 15 minutes while the bot is running (unless
   someone else has the same UID linked); `/apagar-meus-dados` deletes them immediately.
+- **Summary and Universes read from HoYoLAB:** only the latest reading per UID. It is deleted when
+  the UID is no longer linked (within 15 minutes while the bot is running, unless someone else has
+  the same UID), after 30 days without a new reading, when HoYoLAB answers that the chronicle is
+  private, or immediately by `/apagar-meus-dados`. The list of UIDs Cyrene's account looked up each
+  day, with no link to who asked, is kept for at most 2 days.
 - **Moderation warnings:** they do not expire. They are the server's record of what happened there
   and include personal data. This command does not delete them; use Contact for requests about
   these records.
@@ -620,7 +639,12 @@ What leaves the bot's infrastructure, and only as needed:
   per UID.
   It only works if you made your battle chronicle public in the HoYoLAB settings. What was read
   (Memory of Chaos, Pure Fiction, Apocalyptic Shadow and Anomaly Arbitration stars, and the teams of
-  each side) stays in the bot's memory for up to 6 hours. `/endgame` shows in a card, **in the
+  each side) stays in the bot's memory for up to 6 hours. On `/perfil` the bot also reads the
+  chronicle summary (active days, chests opened and the Anomaly Arbitration rank badge) and, when
+  someone opens the Universes page, your progress in the Universe modes; this stays in memory for up
+  to 24 hours, and the latest complete reading per UID is written to the database (sections 1 and 3).
+  If HoYoLAB cannot be queried (daily limit, captcha, outage), the card shows that stored reading
+  with its date. A private chronicle does not use the stored reading and also deletes it. `/endgame` shows in a card, **in the
   channel where it was asked and to whoever is in it**, the last floor you cleared in each mode (and
   the Knights and the King of Anomaly Arbitration): the teams with characters and eidolons, the
   stars, the cycles or points and the buff, along with your server nickname and your UID. Any member
@@ -642,8 +666,10 @@ What leaves the bot's infrastructure, and only as needed:
   The card posted on Discord, with the stars drawn on it and described in the image's alt text, stays
   there like any message. So that no one burns the daily limit of Cyrene's account alone, the bot also
   notes in memory, until the day turns over (UTC), which UIDs each member caused to be looked up (at
-  most three new ones a day); this is not written to the database. The bot never asks for your
-  account login, password or cookies.
+  most three new ones a day); this is not written to the database. The list of UIDs Cyrene's account
+  looked up that day, without saying who asked, is written to the database for up to 2 days, so a
+  bot restart does not reset that count. The bot never asks for your account login, password or
+  cookies.
 - **Search engines** — when the bot cannot answer a game question from what it already has, a search
   about **the subject of the question** is sent, through a self-hosted metasearch instance, to
   public search engines. The subject is sent, not your identity.
@@ -732,8 +758,8 @@ about how your data is used. In practice, without asking anyone:
 `/apagar-meus-dados` opens a form with a preview and a confirmation checkbox. Leaving it unchecked
 deletes nothing. Confirming performs irreversible deletion of your profile, stored name, UID, manual
 and learned memory, learning preferences and receipts, linked sessions and exchanges, build scores
-and history, the endgame read from HoYoLAB for your UID (including that of anyone sharing the same
-UID), your votes and drafts. Published guides and tier lists are anonymized; moderation
+and history, the endgame, summary and Universes read from HoYoLAB for your UID (including that of
+anyone sharing the same UID), your votes and drafts. Published guides and tier lists are anonymized; moderation
 warnings remain. Caches and answer IDs without a direct profile link are not deleted by this command;
 cache content follows section 3 pruning. The command does not delete Discord messages, third-party
 copies or existing backups. It also does not reset server usage or remove its technical receipts
